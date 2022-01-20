@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/CSS/variables.css">
+    <link rel="stylesheet" href="static/CSS/navbar.css">
+    <link rel="stylesheet" href="static/CSS/content.css">
+    <link rel="stylesheet" href="static/CSS/elements.css">
+    <link rel="stylesheet" href="static/CSS/footer.css">
+    <script type="module" src="static/js/navbar.js"></script>
+    <title>
+        {% block title %}LVC | {% endblock title %}
+    </title>
+</head>
+<body>
+    <input id="close-menu" class="close-menu" type="checkbox"  aria-label="Close menu" role="button">
+    <label class="close-menu-label invisible-item" for="close-menu" title="close menu">≡</label>
+    <nav>
+        <div class="logo"><a href="#" onclick="getElementById('close-menu')">LVC</a></div>
+        <ul>
+            <li class="option"><a href="#">Home</a></li>
+            <li class="option">
+                <a href="#">Density <i class="arrow down"></i></a>
+                <ul>
+                    <li><a href="#">Murnaghan</a></li>
+                    <li><a href="#">Eq 2</a></li>
+                    <li><a href="#">Eq 3</a></li>
+                </ul>
+            </li>
+            <li class="option">
+                <a href="#">Prop 2 <i class="arrow down"></i></a>
+                <ul>
+                    <li><a href="#">Eq 1</a></li>
+                    <li><a href="#">Eq 2</a></li>
+                    <li><a href="#">Eq 3</a></li>
+                </ul>
+            </li>
+            <li class="option">
+                <a href="#">Prop 3 <i class="arrow down"></i></a>
+                <ul>
+                    <li><a href="#">Eq 1</a></li>
+                    <li><a href="#">Eq 2</a></li>
+                    <li><a href="#">Eq 3</a></li>
+                </ul>
+            </li>
+            <li class="option"><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}{% endblock content %}
+    
+    <section class="contact">
+        <div class="container">
+            <h1>Gabriel Salateo Rosin</h1>
+        </div>
+        <div class="grid-container">
+            <div class="left-side">
+                <img src="static/img/my_picture.jpeg" id="profile"
+                alt="A picture of Gabriel Salateo Rosin, the sites' creator">
+            </div>
+            <div class="right-side">
+                <h2>Contact me</h2>
+                <a href="https://www.linkedin.com/in/gabriel-rosin/">
+                    <img src="static/img/linkedin.png" alt="LinkedIn logo" id="linkedin"
+                    target="_blank" rel="noopener noreferrer">
+                </a>
+                <a href="mailto:gabriel.s.rosin@gmail.com">
+                    <img src="static/img/gmail.png" alt="Gmail logo" id="gmail"
+                    target="_blank" rel="noopener noreferrer">
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h3>Made by Gabriel Salateo Rosin</p>
+    </footer>
+</body>
+</html>
