@@ -4,8 +4,6 @@
 
 .container {
     width: 100vw;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
     overflow-x: hidden;
 }
 
@@ -17,7 +15,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto auto;
-    margin: 2vh 5vh 2vh 2vh;
+    margin: 2vh 2vh 2vh 2vh;
 }
 
 .grid-container .left-side, .grid-container .right-side {

@@ -6,3 +6,7 @@ from django.views import View
 def home(request):
     template_name = 'home/home.html'
     return render(request, template_name)
+
+def contact(request):
+    template_name = 'home/contact.html'
+    return render(request, template_name)

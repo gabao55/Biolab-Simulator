@@ -17,66 +17,21 @@
     </title>
 </head>
 <body>
-    <input id="close-menu" class="close-menu" type="checkbox"  aria-label="Close menu" role="button">
-    <label class="close-menu-label invisible-item" for="close-menu" title="close menu">≡</label>
-    <nav>
-        <div class="logo"><a href="#" onclick="getElementById('close-menu')">LVC</a></div>
-        <ul>
-            <li class="option"><a href="#">Home</a></li>
-            <li class="option">
-                <a href="/density/">Density <i class="arrow down"></i></a>
-                <ul>
-                    <li><a href="#">Murnaghan</a></li>
-                    <li><a href="#">Eq 2</a></li>
-                    <li><a href="#">Eq 3</a></li>
-                </ul>
-            </li>
-            <li class="option">
-                <a href="#">Prop 2 <i class="arrow down"></i></a>
-                <ul>
-                    <li><a href="#">Eq 1</a></li>
-                    <li><a href="#">Eq 2</a></li>
-                    <li><a href="#">Eq 3</a></li>
-                </ul>
-            </li>
-            <li class="option">
-                <a href="#">Prop 3 <i class="arrow down"></i></a>
-                <ul>
-                    <li><a href="#">Eq 1</a></li>
-                    <li><a href="#">Eq 2</a></li>
-                    <li><a href="#">Eq 3</a></li>
-                </ul>
-            </li>
-            <li class="option"><a href="#">Contact</a></li>
-        </ul>
-    </nav>
+
+    {% include 'partial/_navbar.html' %}
 
     {% block content %}{% endblock content %}
+
+    {% url 'home:contact' as contact_url %}
+    {% if request.path == contact_url %}
     
-    <section class="contact">
-        <div class="container">
-            <h1>Gabriel Salateo Rosin</h1>
-        </div>
-        <div class="grid-container">
-            <div class="left-side">
-                <img src="{% static 'assets/img/my_picture.jpeg' %}" id="profile"
-                alt="A picture of Gabriel Salateo Rosin, the sites' creator">
-            </div>
-            <div class="right-side">
-                <h2>Contact me</h2>
-                <a href="https://www.linkedin.com/in/gabriel-rosin/">
-                    <img src="{% static 'assets/img/linkedin.png' %}" alt="LinkedIn logo" id="linkedin"
-                    target="_blank" rel="noopener noreferrer">
-                </a>
-                <a href="mailto:gabriel.s.rosin@gmail.com?subject=Contact about LVC">
-                    <img src="{% static 'assets/img/gmail.png' %}" alt="Gmail logo" id="gmail"
-                    target="_blank" rel="noopener noreferrer">
-                </a>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <h3>Made by Gabriel Salateo Rosin</p>
-    </footer>
+        {% include 'partial/_contact.html' %}
+
+    {% else %}
+
+        {% include 'partial/_footer.html' %}
+
+    {% endif %}
+
 </body>
 </html>
