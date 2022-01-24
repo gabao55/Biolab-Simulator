@@ -1,4 +1,3 @@
-from re import template
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from django.views import View
@@ -7,4 +6,3 @@ from django.views import View
 def home(request):
     template_name = 'home/home.html'
     return render(request, template_name)
-    

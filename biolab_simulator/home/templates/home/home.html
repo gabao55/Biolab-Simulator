@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock title %}
 
@@ -24,7 +25,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
         <h2>Lorem ipsum</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <img src="static/img/test_image.png" alt="Test image">
+        <img src="{% static 'assets/img/test_image.png' %}" alt="Test image">
         <figcaption>Testing the caption</figcaption>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
     </sectio>
