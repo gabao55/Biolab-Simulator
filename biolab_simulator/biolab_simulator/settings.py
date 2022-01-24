@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home.apps.HomeConfig',
     'density.apps.DensityConfig',
+    'cetaneNumber.apps.CetanenumberConfig',
+    'pluggingPoint.apps.PluggingpointConfig',
 ]
 
 MIDDLEWARE = [

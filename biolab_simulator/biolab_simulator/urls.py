@@ -20,10 +20,10 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-#TODO: Add next apps (plugging point and cetane number)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('density/', include('density.urls')),
+    path('cetane-number/', include('cetaneNumber.urls')),
+    path('plugging-point/', include('pluggingPoint.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
