@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 from django.contrib.messages import constants
-from .key import key
+from .key import key, db_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'biolab_simulator.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'biolab_simulator',
+        'USER': 'root',
+        'PASSWORD': db_key,
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
