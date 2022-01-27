@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'pluggingPoint.apps.PluggingpointConfig',
 ]
 
+INSTALLED_APPS += ('django_summernote',)
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

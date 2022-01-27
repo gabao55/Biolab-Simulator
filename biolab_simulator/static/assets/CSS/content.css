@@ -1,0 +1,33 @@
+
+.responsive-space {
+    height: 70px;
+}
+
+.content h1 {
+    margin: 2vh 5vw 2vh 5vw;
+    color: var(--primary-green);
+}
+
+.content h2 {
+    margin: 2vh 5vw 2vh 5vw;
+    color: var(--primary-green);
+}
+
+.content p {
+    margin: 0px 5vw 0px 5vw;
+}
+
+.content img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    width: 80%;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.content figcaption {
+    text-align: center;
+    margin-bottom: 2rem;
+}

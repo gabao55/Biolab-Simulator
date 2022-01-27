@@ -1,16 +1,18 @@
 from operator import mod
 from django.contrib import admin
 from . import models
+from django_summernote.admin import SummernoteModelAdmin
 
 
 # Register your models here.
 class EquationsInline(admin.TabularInline):
-    model = models.Equations
+    list_display = ['getModel', 'number']
+    model = models.Equation
     extra = 1
 
 
 class GraphsInline(admin.TabularInline):
-    model = models.Graphs
+    model = models.Graph
     extra = 1
 
 
@@ -20,22 +22,17 @@ class CompoundsInline(admin.TabularInline):
 
 
 class ParametersInline(admin.TabularInline):
-    model = models.Parameters
-    extra = 1
-
-
-class AbsoluteParameterInline(admin.TabularInline):
-    model = models.AbsoluteParameter
+    model = models.Parameter
     extra = 1
 
 
 class PredictiveModelAdmin(admin.ModelAdmin):
+    summernote_fields = ('description',)
     list_display = ['id', 'name']
     inlines = [
         EquationsInline,
         GraphsInline,
         CompoundsInline,
-        AbsoluteParameterInline
     ]
 
 
@@ -48,7 +45,6 @@ class CompoundAdmin(admin.ModelAdmin):
 
 admin.site.register(models.PredictiveModel, PredictiveModelAdmin)
 admin.site.register(models.Compound, CompoundAdmin)
-admin.site.register(models.Equations)
-admin.site.register(models.Graphs)
-admin.site.register(models.AbsoluteParameter)
-admin.site.register(models.Parameters)
+admin.site.register(models.Equation)
+admin.site.register(models.Graph)
+admin.site.register(models.Parameter)
