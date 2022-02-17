@@ -26,7 +26,8 @@ class ParametersInline(admin.TabularInline):
     extra = 1
 
 
-class PredictiveModelAdmin(admin.ModelAdmin):
+#TODO: Repair django summernote
+class PredictiveModelAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
     list_display = ['id', 'name']
     inlines = [
