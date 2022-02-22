@@ -26,10 +26,9 @@ class ParametersInline(admin.TabularInline):
     extra = 1
 
 
-#TODO: Repair django summernote
 class PredictiveModelAdmin(SummernoteModelAdmin):
     summernote_fields = ('description',)
-    list_display = ['id', 'name']
+    list_display = ['name']
     inlines = [
         EquationsInline,
         GraphsInline,
@@ -44,8 +43,15 @@ class CompoundAdmin(admin.ModelAdmin):
     ]
 
 
+class ParameterAdmin(admin.ModelAdmin):
+    list_display = ['getCompound', 'name', 'value']
+
+
+class GraphAdmin(admin.ModelAdmin):
+    list_display = ['getModel', 'label']
+
 admin.site.register(models.PredictiveModel, PredictiveModelAdmin)
 admin.site.register(models.Compound, CompoundAdmin)
 admin.site.register(models.Equation)
-admin.site.register(models.Graph)
-admin.site.register(models.Parameter)
+admin.site.register(models.Graph, GraphAdmin)
+admin.site.register(models.Parameter, ParameterAdmin)

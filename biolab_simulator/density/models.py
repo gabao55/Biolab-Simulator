@@ -1,6 +1,3 @@
-from operator import mod
-from pyexpat import model
-from re import T
 from tkinter import CASCADE
 from django.db import models
 
@@ -34,6 +31,9 @@ class Graph(models.Model):
     def __str__(self) -> str:
         return self.label
 
+    def getModel(self) -> str:
+        return self.model_id.name
+
 
 class Compound(models.Model):
     model_id = models.ForeignKey(PredictiveModel, on_delete=models.CASCADE)
@@ -47,9 +47,12 @@ class Compound(models.Model):
         return self.model_id.name
 
 class Parameter(models.Model):
-    model_id = models.ForeignKey(Compound, on_delete=models.CASCADE)
+    compound_id = models.ForeignKey(Compound, on_delete=models.CASCADE)
     name = models.CharField(max_length=50 ,verbose_name="Parameter's name")
     value = models.FloatField(verbose_name="Parameter's value")
 
     def __str__(self) -> str:
         return self.name
+
+    def getCompound(self) -> str:
+        return self.compound_id.name
