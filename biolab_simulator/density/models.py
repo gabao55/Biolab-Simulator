@@ -1,7 +1,6 @@
 from tkinter import CASCADE
 from django.db import models
 
-# Create your models here.
 class PredictiveModel(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50 ,verbose_name="Model's name")
