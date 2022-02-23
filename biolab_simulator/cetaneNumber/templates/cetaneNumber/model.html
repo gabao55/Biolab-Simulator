@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ model.name }}{% endblock title %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="responsive-space"></div>
+        <h1>{{ model.name }}</h1>
+        
+        {{ model.description|safe }}
+        
+        {% with model.equation_set.all as equations %}
+        
+            {% for equation in equations %}
+            
+                <img src="{{ equation.equation.url }}" alt="Equation number {{ equation.id }}">
+
+            {% endfor %}
+        
+        {% endwith %}
+        
+        {% with model.graph_set.all as graphs %}
+        
+            {% for graph in graphs %}
+            
+                <img src="{{ graph.image.url }}" alt="{{ graph.label }}">
+                <figcaption>{{ graph.label }}</figcaption>
+
+            {% endfor %}
+        
+        {% endwith %}
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
+    </section>
+
+{% endblock content %}
