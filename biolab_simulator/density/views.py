@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView
 from . import models
 
-# Create your views here.
 def density(request):
     template_name = 'density/density.html'
     return render(request, template_name)

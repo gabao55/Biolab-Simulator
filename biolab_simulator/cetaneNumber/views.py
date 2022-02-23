@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView
 from . import models
 
-# Create your views here.
 def cetaneNumber(request):
     template_name = 'cetaneNumber/cetaneNumber.html'
     return render(request, template_name)
