@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Home(models.Model):
+    id = models.BigIntegerField(verbose_name="id", primary_key=True)
     intro = models.TextField(verbose_name='introduction')
 
     def __str__(self) -> str:
