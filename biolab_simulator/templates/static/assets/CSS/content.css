@@ -6,6 +6,7 @@
 .content h1 {
     margin: 2vh 5vw 2vh 5vw;
     color: var(--primary-green);
+    text-align: center;
 }
 
 .content h2 {
