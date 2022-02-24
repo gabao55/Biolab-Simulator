@@ -1,10 +1,8 @@
-from operator import mod
 from django.contrib import admin
 from . import models
 from django_summernote.admin import SummernoteModelAdmin
 
 
-# Register your models here.
 class EquationsInline(admin.TabularInline):
     list_display = ['getModel', 'number']
     model = models.Equation
