@@ -13,8 +13,8 @@ class Home(models.Model):
 class Image(models.Model):
     home_id = models.ForeignKey(Home, on_delete=models.CASCADE)
     id = models.BigIntegerField(verbose_name='id', primary_key=True)
-    image = models.ImageField(verbose_name='Image')
     label = models.CharField(verbose_name='Label', max_length=200)
+    image = models.ImageField(verbose_name='Image')
 
     def __str__(self) -> str:
         return 'Image ' + str(self.id) + ' - ' + str(self.label)

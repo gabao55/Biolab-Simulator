@@ -11,7 +11,8 @@ class ImageInline(admin.TabularInline):
 
 class HomeAdmin(SummernoteModelAdmin):
     summernote_fields = ('intro', )
-    list_display = ['__str__']
+    list_display = ['__str__', 'intro']
+    inlines = [ImageInline]
 
 
 @admin.register(models.Image)
