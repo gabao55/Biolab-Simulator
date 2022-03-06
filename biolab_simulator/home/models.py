@@ -1,13 +1,15 @@
 from tkinter import CASCADE
+from unicodedata import name
 from django.db import models
 
 
 class Home(models.Model):
     id = models.BigIntegerField(verbose_name="id", primary_key=True)
-    intro = models.TextField(verbose_name='introduction')
+    name = models.CharField(verbose_name='Home name', max_length=50)
+    intro = models.TextField(verbose_name='Introduction')
 
     def __str__(self) -> str:
-        return 'Home page'
+        return self.name + ' Page'
 
 
 class Image(models.Model):

@@ -32,7 +32,7 @@ function dropdownAnimationClick() {
     mobileMenuItem.forEach((item) => {
         let arrowPosition;
         let options;
-        item.addEventListener("click", () => {
+        item.addEventListener("mouseenter", () => {
             options = item.querySelector("ul");
             options.classList.toggle("invisible-item");
             arrowPosition = item.querySelector("i");

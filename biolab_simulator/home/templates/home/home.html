@@ -16,7 +16,7 @@
 
             {% for model in density_models %}
             
-                <li>{{ model.name }} - {{ model.brief_description }}</li>
+                <li><a href="{% url 'density:density_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
                 
             {% endfor %}
             

@@ -31,6 +31,12 @@
     margin: 2vh 5vw 2vh 12vw;
 }
 
+.content a {
+    color: inherit;
+    text-decoration-color: var(--primary-green);
+    text-decoration-thickness: 2px;
+}
+
 .content img {
     display: block;
     margin-left: auto;
