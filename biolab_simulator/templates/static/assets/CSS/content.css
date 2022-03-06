@@ -14,8 +14,21 @@
     color: var(--primary-green);
 }
 
+.content h3 {
+    margin: 2vh 5vw 2vh 8vw;
+    color: var(--primary-green);
+}
+
 .content p {
     margin: 0px 5vw 0px 5vw;
+}
+
+.content ul {
+    list-style:none;
+}
+
+.content li {
+    margin: 2vh 5vw 2vh 10vw;
 }
 
 .content img {

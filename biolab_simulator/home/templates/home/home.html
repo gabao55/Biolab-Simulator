@@ -10,6 +10,21 @@
         <h1>Biolab Simulator (BLSIM)</h1>
         
         {{ home.intro|safe }}
+
+        <h3>Density</h3>
+        <ul>
+
+            {% for model in density_models %}
+            
+                <li>{{ model.name }}</li>
+                <li>{{ model.name }}</li>
+                <li>{{ model.name }}</li>
+                <li>{{ model.name }}</li>
+                <li>{{ model.name }}</li>
+    
+            {% endfor %}
+            
+        </ul>
         
         <img src="{% static 'assets/img/test_image.png' %}" alt="Test image">
         <figcaption>Testing the caption</figcaption>
