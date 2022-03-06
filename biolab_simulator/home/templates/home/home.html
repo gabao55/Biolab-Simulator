@@ -16,12 +16,30 @@
 
             {% for model in density_models %}
             
-                <li>{{ model.name }}</li>
-                <li>{{ model.name }}</li>
-                <li>{{ model.name }}</li>
-                <li>{{ model.name }}</li>
-                <li>{{ model.name }}</li>
-    
+                <li>{{ model.name }} - {{ model.brief_description }}</li>
+                
+            {% endfor %}
+            
+        </ul>
+
+        <h3>Cetane Number</h3>
+        <ul>
+
+            {% for model in cetane_number_models %}
+            
+                <li>{{ model.name }} - {{ model.brief_description }}</li>
+                
+            {% endfor %}
+            
+        </ul>
+
+        <h3>Cold Filter Plugging Point (CFPP)</h3>
+        <ul>
+
+            {% for model in plugging_point_models %}
+            
+                <li>{{ model.name }} - {{ model.brief_description }}</li>
+                
             {% endfor %}
             
         </ul>
