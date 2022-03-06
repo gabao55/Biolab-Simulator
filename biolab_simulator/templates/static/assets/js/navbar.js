@@ -36,18 +36,18 @@ function dropdownAnimationClick() {
             options = item.querySelector("ul");
             options.classList.toggle("invisible-item");
             arrowPosition = item.querySelector("i");
-            if (arrowPosition.classList.contains("up")) {
-                arrowPosition.classList.replace("up", "down");
-                options.style.setProperty("visibility", "hidden");
-                options.style.setProperty("top", "90px");
-            }
-            else {
-                arrowPosition.classList.replace("down", "up")
-                options.style.setProperty("visibility", "visible");
-                options.style.setProperty("top", "70px");
-                options.style.setProperty("visibility", "visible");
-            }
+            arrowPosition.classList.replace("down", "up");
+            options.style.setProperty("visibility", "visible");
+            options.style.setProperty("top", "90px");
         });
+        item.addEventListener("mouseleave", () => {
+            options = item.querySelector("ul");
+            options.classList.toggle("invisible-item");
+            arrowPosition = item.querySelector("i");    
+            arrowPosition.classList.replace("up", "down")
+            options.style.setProperty("visibility", "hidden");
+            options.style.setProperty("top", "70px");      
+        })
     });
 };
 
@@ -63,7 +63,7 @@ if (window.matchMedia("(max-width: 820px)").matches) {
     let dropdownOption;
     mobileMenuItem.forEach((item) => {
         item.classList.add("mobile-menu-item");
-        dropdownOption = item.querySelector("ul");        
+        dropdownOption = item.querySelector("ul");
         if (dropdownOption) {
             dropdownOption.classList.toggle("invisible-item")
         }
