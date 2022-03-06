@@ -4,6 +4,7 @@ from django.db import models
 class PredictiveModel(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50 ,verbose_name="Model's name")
+    brief_description = models.CharField(max_length=500, verbose_name="Brief description for home page")
     description = models.TextField(verbose_name="Model's description")
 
     def __str__(self) -> str:
