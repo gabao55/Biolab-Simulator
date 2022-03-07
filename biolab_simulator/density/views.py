@@ -1,10 +1,16 @@
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import DetailView
+from django.views.generic import DetailView, View
 from . import models
 
-def density(request):
+
+class Density(View):
     template_name = 'density/density.html'
-    return render(request, template_name)
+
+    def get(self, request, *args, **kwargs):
+        density_models = models.PredictiveModel.objects.all
+        context = {'density_models': density_models,}
+
+        return render(request, self.template_name, context)
 
 
 class PredictiveModel(DetailView):

@@ -5,6 +5,6 @@ from . import views
 app_name = 'density'
 
 urlpatterns = [
-    path('', views.density, name='density'),
+    path('', views.Density.as_view(), name='density'),
     path('<str:name>/', views.PredictiveModel.as_view(), name='density_model'),
 ]
