@@ -38,6 +38,10 @@
     text-underline-offset: 4px;
 }
 
+.content h3 a {
+    text-decoration: none;
+}
+
 .content img {
     display: block;
     margin-left: auto;

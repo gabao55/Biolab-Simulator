@@ -8,22 +8,40 @@
     <section class="content">
         <div class="responsive-space"></div>
         <h1>Density</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
-        <h2>Lorem ipsum</h2>
+        <h2>About</h2>
+        <p>Knowledge of the density of a fuel is an extremely important factor in determining whether there will be good
+            operation of an engine. The power produced by the engine is directly proportional to the mass of fuel burned.
+            As the injection pump feeds constant volumes of diesel oil to the engine, the density influences the injected mass which,
+            in turn, defines the power produced and the specific volumetric consumption of diesel oil. So the density must be
+            controlled in a range to avoid variations in power for the same volume injected into the chamber (FARAH, 2015).</p>
+        <p>According to ANP's (Brazilian National Agency of Petroleum) specifications, this density range at 20°C covers values ​​
+            from 850 to 900 kg/m³. As previously described, within the allowed range, a higher density reduces specific consumption and 
+            increases the power generated, however, increases CO, hydrocarbon and particulate emissions, which are harmful to the environment.</p>
+        <p>Overall, temperature, pressure and composition of biodiesel are the main factors that determine its density,
+            so that the higher the temperature, or the lower the pressure, the higher the density, thus, there are in the literature
+            correlations that determine the density from these parameters (CHHETRI and WATTS, 2012). Another type of
+            model widely used for this purpose is based on Equations of State (EoS), such as the Equation of State
+            of Translated Volume (VTPR EoS) (SCHMID and GMEHLING, 2010).</p>
+        <p>There are also models based exclusively on the molecular structure of the components of a liquid to predict its
+            molar volume, which makes up the contribution methods of GCVOL groups, from which these models are used to
+            determine the biodiesel density over a temperature range. The first method to adopt this strategy
+            (ELBRO, FREDENSLUND and RASMUSSEN, 1991), showed great accuracy, later suffering some
+            new modifications with updates of the parameter values ​​for the contributing groups (PRATAS, FREITAS, et al., 2011).</p>
+        <p>Finally, another model widely used to predict the biodiesel density takes into account the structure
+            of the compound, but with a different approach than group contribution methods. The strategy consists
+            in evaluating the chain length, which is, the number of carbons present in the compound and the number of unsaturations
+            present in the molecule (LAPUERTA, RODRÍGUEZ-FERNÁNDEZ and ARMAS, 2010), thus being able to apply mixing rules
+            in the case of biodiesel, since it is a mixture of several esters.</p>
+        <h2>Models available</h2>
+        <ul>
+
+            {% for model in density_models %}
+            
+                <li><a href="{% url 'density:density_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
+                
+            {% endfor %}
+            
+        </ul>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
         <img src="{% static 'assets/img/test_image.png' %}" alt="Test image">
         <figcaption>Testing the caption</figcaption>

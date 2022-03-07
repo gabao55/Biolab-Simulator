@@ -11,7 +11,7 @@
         
         {{ home.intro|safe }}
 
-        <h3>Density</h3>
+        <h3><a href="{% url 'density:density' %}">Density</a></h3>
         <ul>
 
             {% for model in density_models %}
@@ -22,7 +22,7 @@
             
         </ul>
 
-        <h3>Cetane Number</h3>
+        <h3><a href="{% url 'cetaneNumber:cetaneNumber' %}">Cetane Number</a></h3>
         <ul>
 
             {% for model in cetane_number_models %}
@@ -33,7 +33,7 @@
             
         </ul>
 
-        <h3>Cold Filter Plugging Point (CFPP)</h3>
+        <h3><a href="{% url 'pluggingPoint:pluggingPoint' %}">Cold Filter Plugging Point (CFPP)</a></h3>
         <ul>
 
             {% for model in plugging_point_models %}
