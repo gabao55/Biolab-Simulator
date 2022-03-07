@@ -11,6 +11,7 @@ class CetaneNumber(View):
         context = {'predictive_models': predictive_models,}
 
         return render(request, self.template_name, context)
+        
 
 class PredictiveModel(DetailView):
     model = models.PredictiveModel
