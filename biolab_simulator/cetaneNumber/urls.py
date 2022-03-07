@@ -4,6 +4,6 @@ from . import views
 app_name = 'cetaneNumber'
 
 urlpatterns = [
-    path('', views.cetaneNumber, name='cetaneNumber'),
+    path('', views.CetaneNumber.as_view(), name='cetaneNumber'),
     path('<str:name>/', views.PredictiveModel.as_view(), name='cetaneNumber_model'),
 ]
