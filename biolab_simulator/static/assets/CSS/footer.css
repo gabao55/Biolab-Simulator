@@ -69,6 +69,11 @@ footer h3 {
     padding-bottom: 5px;
 }
 
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
 @media screen and (max-width: 920px) {
     .grid-container {
         grid-template-columns: auto;
