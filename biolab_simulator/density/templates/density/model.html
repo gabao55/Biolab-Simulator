@@ -42,20 +42,15 @@
 
         <p>Insert your parameters to predict the density of your biodiesel:<p>
         
-        <div class="form-center">
-            <form action="{% url 'density:density_model' name=model.name %}" method="POST">
-                <label for="compound-names">Add compounds to your mixture (%):</label>
-                <input type="number" name="compound-percentage" min="0" max="100">
-                <select name="compound-names">
-                    <option value="" disabled selected hidden>Choose compound</option>
+        <div class="form-center" style="display: flex; justify-content: center;">
+            <div class="form-center" style="display: flex; justify-content: center;">
+                <form action="." method="POST">
 
-                    {% for compound in model.compound_set.all %}
-                        <option value="{{ compound.name }}">{{ compound.name }}</option>
-                    {% endfor %}
-                
-                </select>
-                <input type="submit" value="Add">
-            </form>
+                    {% csrf_token %}
+                    {{ form }}
+
+                    <input type="submit" value="Add">
+                </form>
         </div>
         
     </section>

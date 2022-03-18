@@ -41,7 +41,7 @@ class Compound(models.Model):
     esther_type = models.CharField(max_length=50, verbose_name="Esther type", blank=True)
 
     def __str__(self) -> str:
-        return self.name
+        return str(self.esther_type) + ' ' + str(self.name) 
 
     def getModel(self) -> str:
         return self.model_id.name

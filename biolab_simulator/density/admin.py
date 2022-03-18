@@ -35,7 +35,7 @@ class PredictiveModelAdmin(SummernoteModelAdmin):
 
 
 class CompoundAdmin(admin.ModelAdmin):
-    list_display = ['getModel', 'name']
+    list_display = ['getModel', '__str__']
     inlines = [
         ParametersInline
     ]

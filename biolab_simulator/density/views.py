@@ -1,6 +1,7 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, View
 from . import models
+from .forms import ParametersForms
 
 
 class Density(View):
@@ -15,10 +16,15 @@ class Density(View):
 
 class PredictiveModel(DetailView):
     model = models.PredictiveModel
-    template_name = 'density/model.html'
-    context_object_name = 'model'
 
-    def get_object(self):
-        self.model = get_object_or_404(models.PredictiveModel,
+    def get(self, request, *args, **kwargs):
+        form = ParametersForms
+        model = get_object_or_404(models.PredictiveModel,
         name=self.kwargs['name'])
-        return self.model
+        template_name = 'density/model.html'
+        context = {
+            'form': form,
+            'model': model
+        }
+
+        return render(request, template_name, context)

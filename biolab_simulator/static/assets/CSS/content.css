@@ -6,6 +6,7 @@
 .content h1 {
     margin: 2vh 5vw 2vh 5vw;
     color: var(--primary-green);
+    text-align: center;
 }
 
 .content h2 {
@@ -13,8 +14,32 @@
     color: var(--primary-green);
 }
 
+.content h3 {
+    margin: 2vh 5vw 2vh 8vw;
+    color: var(--primary-green);
+}
+
 .content p {
     margin: 0px 5vw 0px 5vw;
+}
+
+.content ul {
+    list-style:none;
+}
+
+.content li {
+    margin: 2vh 5vw 2vh 12vw;
+}
+
+.content a {
+    color: inherit;
+    text-decoration-color: var(--primary-green);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.content h3 a {
+    text-decoration: none;
 }
 
 .content img {
@@ -32,7 +57,7 @@
     margin-bottom: 2rem;
 }
 
-.form-center {
+.content .form-center {
     display: flex;
     justify-content: center;
 }
