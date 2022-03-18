@@ -2,8 +2,12 @@ from django import forms
 from .models import Compound
 
 compounds = []
-for item in Compound.objects.all():
-    compounds.append((str(item), str(item)))
+for compound in Compound.objects.all():
+    compounds.append((str(compound.name), str(compound.name)))
+
+esther_types = []
+for esther_type in Compound.objects.all():
+    esther_types.append((str(esther_type.esther_type), str(esther_type.esther_type)))
 
 
 class ParametersForms(forms.Form):
@@ -18,5 +22,11 @@ class ParametersForms(forms.Form):
         required=True,
         widget=forms.Select,
         choices=compounds,
+        label='',
+    )
+    esther_type = forms.MultipleChoiceField(
+        required=True,
+        widget=forms.Select,
+        choices=esther_types,
         label='',
     )

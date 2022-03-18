@@ -28,3 +28,7 @@ class PredictiveModel(DetailView):
         }
 
         return render(request, template_name, context)
+
+    #TODO: Define POST method for processing data
+    def post(self, request, *args, **kwargs):
+        pass
