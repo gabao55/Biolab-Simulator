@@ -41,17 +41,26 @@
         <h2>Predict</h2>
 
         <p>Insert your parameters to predict the density of your biodiesel:<p>
-        
-        <div class="form-center" style="display: flex; justify-content: center;">
-            <div class="form-center" style="display: flex; justify-content: center;">
-                <form action="." method="POST">
+    
+        <div class="form-center">
+            <form action="." method="POST">
 
-                    {% csrf_token %}
-                    {{ form }}
+                {% csrf_token %}
+                {% for compound in model.compound_set.all %}
 
-                    <input type="submit" value="Add">
-                </form>
+                    {% comment %} #TODO: Separate compounds by esther type (make interface cleaner) {% endcomment %}
+                    <label for="{{ compound.esther_type }} {{ compound.name }}">
+                        {{ compound.esther_type}} {{ compound.name }}
+                    </label>
+                    <input type='number' min='0' max='100' placeholder='0'
+                    name="{{ compound.esther_type }} {{ compound.name }}"><br>
+
+                {% endfor %}
+
+                <input type="submit" value="Predict density">
+            </form>
         </div>
+    
         
     </section>
 

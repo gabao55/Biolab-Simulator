@@ -1,3 +1,7 @@
+from http.client import HTTPResponse
+from multiprocessing import context
+from urllib import request
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, View
 from . import models
@@ -16,19 +20,29 @@ class Density(View):
 
 class PredictiveModel(DetailView):
     model = models.PredictiveModel
-
+    template_name = 'density/model.html'
+    
     def get(self, request, *args, **kwargs):
-        form = ParametersForms
-        model = get_object_or_404(models.PredictiveModel,
+        self.form = ParametersForms
+        self.model = get_object_or_404(models.PredictiveModel,
         name=self.kwargs['name'])
-        template_name = 'density/model.html'
-        context = {
-            'form': form,
-            'model': model
+        self.context = {
+            'model': self.model,
         }
 
-        return render(request, template_name, context)
+        return render(request, self.template_name, self.context)
 
-    #TODO: Define POST method for processing data
+    #TODO: Establish procedure to process data, predict property and return the predicted value in the template
     def post(self, request, *args, **kwargs):
-        pass
+        if request.method == 'POST':
+            form = request.POST.dict()
+            compounds = {}
+            for compound, value in form.items():
+                if compound != 'csrfmiddlewaretoken':
+                    compounds[compound] = value
+            context = {
+                'form': form,
+                'compounds': compounds,
+            }
+
+            return render(request, 'density/helloworld.html', context)
