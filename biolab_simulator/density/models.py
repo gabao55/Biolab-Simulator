@@ -36,7 +36,7 @@ class Graph(models.Model):
 
 
 class Compound(models.Model):
-    model_id = models.ForeignKey(PredictiveModel, on_delete=models.CASCADE)
+    model_id = models.ForeignKey(PredictiveModel, on_delete=models.CASCADE, verbose_name="Predictive model")
     name = models.CharField(max_length=50 ,verbose_name="Compound's representation", blank=True)
     esther_type = models.CharField(max_length=50, verbose_name="Esther type", blank=True)
 

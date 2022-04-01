@@ -32,16 +32,27 @@ class PredictiveModel(DetailView):
 
         return render(request, self.template_name, self.context)
 
-    #TODO: Establish procedure to process data, predict property and return the predicted value in the template
+    #TODO: Establish procedure to predict property from POST data and return the predicted value in the template
     def post(self, request, *args, **kwargs):
-        #TODO: Find a way to identify to which predictive model we are refering
-        print(self.model.id)
+        self.model = self.model.objects.get(name=self.kwargs['name'])
         if request.method == 'POST':
             form = request.POST.dict()
             compounds = {}
+            sum = 0
             for compound, value in form.items():
-                if compound != 'csrfmiddlewaretoken' and value:
-                    compounds[compound] = value
+                if compound != 'csrfmiddlewaretoken' and value and int(value):
+                    compounds[compound] = {'composition': int(value)}
+                    sum += int(value)
+
+                    parameters_set = self.model.compound_set.get(esther_type=compound.split(' ')[0], name=compound.split(' ')[1]).parameter_set.all()
+
+                    for parameter in parameters_set:
+                        compounds[compound][parameter.name] = parameter.value
+
+            if sum != 100:
+                print('error')
+            else:
+                print('success')
 
             #TODO: Insert an action when the user sends an totally empty form
             context = {
