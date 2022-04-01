@@ -1,6 +1,7 @@
 from http.client import HTTPResponse
 from multiprocessing import context
 from urllib import request
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, View
@@ -49,15 +50,18 @@ class PredictiveModel(DetailView):
                     for parameter in parameters_set:
                         compounds[compound][parameter.name] = parameter.value
 
-            if sum != 100:
-                print('error')
-            else:
-                print('success')
-
             #TODO: Insert an action when the user sends an totally empty form
             context = {
                 'form': form,
                 'compounds': compounds,
             }
+
+            if sum != 100:
+                messages.warning(self.request,
+                "The sum of compounds' mass percentage is not equal to 100%, this might affect the property prediction.")
+                return render(request, 'density/helloworld.html', context)
+            else:
+                messages.success(self.request,
+                "Property predicted successfully.")
 
             return render(request, 'density/helloworld.html', context)
