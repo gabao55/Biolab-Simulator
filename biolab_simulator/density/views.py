@@ -52,7 +52,6 @@ class PredictiveModel(DetailView):
                         compounds[compound][parameter.name] = parameter.value
 
             context = {
-                'form': form,
                 'compounds': compounds,
             }
 
