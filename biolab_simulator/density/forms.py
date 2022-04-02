@@ -1,6 +1,7 @@
 from django import forms
 from .models import Compound
 
+#TODO: Remove this file, because it's not being used
 compounds = []
 for compound in Compound.objects.all():
     compounds.append((str(compound.name), str(compound.name)))

@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, View
 from . import models
-from .forms import ParametersForms
+from .utils import murnaghan_equation_predict
 
 
 class Density(View):
@@ -77,19 +77,31 @@ class MurnaghanEquation(DetailView):
     template_name = 'density/model.html'
     model = get_object_or_404(models.PredictiveModel,
         name='Murnaghan Equation')
+
+    intensive_parameters = ['Temperature (K)', "Pressure (MPa)", "Atmospheric density (kg/m³)"]
     context = {
         'model': model,
+        'intensive_parameters': intensive_parameters,
     }
 
     def get(self, request, *args, **kwargs):
 
         return render(request, self.template_name, self.context)
 
-    #TODO: Establish procedure to predict property from POST data and return the predicted value in the template predicted_property.html
     #TODO: After structure is done, add new compounds and parameters and build some tests
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             form = request.POST.dict()
+            
+            intensive_parameters = {"Temperature": int(form["Temperature (K)"]) if form['Temperature (K)'] else '',
+            "Pressure": int(form["Pressure (MPa)"]) if form["Pressure (MPa)"] else '',
+            "Atmospheric density": int(form["Atmospheric density (kg/m³)"]) if form["Atmospheric density (kg/m³)"] else '',
+            }
+
+            form.pop("Temperature (K)")
+            form.pop("Pressure (MPa)")
+            form.pop("Atmospheric density (kg/m³)")
+
             compounds = {}
             sum = 0
             for compound, value in form.items():
@@ -102,11 +114,17 @@ class MurnaghanEquation(DetailView):
                     for parameter in parameters_set:
                         compounds[compound][parameter.name] = parameter.value
 
-            self.context['result'] = compounds
-            
-            if not compounds:
+            if not intensive_parameters['Temperature'] \
+            or not intensive_parameters['Pressure'] \
+            or not intensive_parameters['Atmospheric density']:
                 messages.error(self.request,
-                "Please insert parameters to predict property")
+                "Please insert all intensive parameters to predict property")
+
+                return self.get(request, self.template_name)
+            
+            elif not compounds:
+                messages.error(self.request,
+                "Please insert compounds' mass percentage to predict property")
 
                 return self.get(request, self.template_name)
 
@@ -116,5 +134,7 @@ class MurnaghanEquation(DetailView):
             else:
                 messages.success(self.request,
                 "Property predicted successfully.")
+
+            self.context['result'] = murnaghan_equation_predict(intensive_parameters, compounds, self.model)
 
             return render(request, self.template_name, self.context)
