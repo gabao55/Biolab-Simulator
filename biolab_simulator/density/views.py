@@ -54,7 +54,8 @@ class PredictiveModel(DetailView):
             context = {
                 'compounds': compounds,
             }
-
+            
+            #TODO: Find a way to display predicted property without changing to another page
             if not compounds:
                 messages.error(self.request,
                 "Please insert parameters to predict property")
