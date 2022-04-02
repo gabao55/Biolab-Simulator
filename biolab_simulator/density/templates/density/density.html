@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load home_filters %}
 
 {% block title %}Density{% endblock title %}
 
@@ -35,11 +36,12 @@
         <h2>Models available</h2>
         <ul>
 
-            {% for model in density_models %}
+            {% comment %} #TODO: Add other predictive models to the list once their views are built {% endcomment %}
+            {% with density_models|get_name:"Murnaghan Equation" as density_model %}
             
-                <li><a href="{% url 'density:density_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
-                
-            {% endfor %}
+                <li><a href="{% url 'density:murnaghan_equation' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
+
+            {% endwith %}
             
         </ul>
     </section>
