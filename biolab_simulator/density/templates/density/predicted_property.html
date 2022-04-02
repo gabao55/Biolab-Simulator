@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Density | {{ model.name }}{% endblock title %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="responsive-space"></div>
+
+            <h1>Hello World</h1>
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <div class="container-fluid p-0">
+                            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <p>{{ compounds }}</p>
+            {{ model }}
+        </div>
+    </section>
+
+
+{% endblock content %}
+
+<body>
+    </body>

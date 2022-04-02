@@ -41,6 +41,19 @@
         <h2>Predict</h2>
 
         <p>Insert your parameters to predict the density of your biodiesel:<p>
+
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <div class="container-fluid p-0">
+                            <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                {{ message }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </ul>
+            {% endif %}
     
         <div class="form-center">
             <form action="." method="POST">
@@ -60,6 +73,12 @@
                 <input type="submit" value="Predict density">
             </form>
         </div>
+
+        {% if result %}
+        
+            {{ result }}
+        
+        {% endif %}
     
         
     </section>
