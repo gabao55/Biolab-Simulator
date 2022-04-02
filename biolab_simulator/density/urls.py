@@ -6,5 +6,5 @@ app_name = 'density'
 
 urlpatterns = [
     path('', views.Density.as_view(), name='density'),
-    path('<str:name>/', views.PredictiveModel.as_view(), name='density_model'),
+    path('Murnaghan-Equation/', views.MurnaghanEquation.as_view(), name='murnaghan_equation')
 ]
