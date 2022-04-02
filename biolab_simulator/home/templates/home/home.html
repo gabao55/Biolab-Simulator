@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load home_filters %}
 
 {% block title %}Home{% endblock title %}
 
@@ -14,17 +15,20 @@
         <h3><a href="{% url 'density:density' %}">Density</a></h3>
         <ul>
 
-            {% for model in density_models %}
+            {% comment %} #TODO: Add other predictive models to the list once their views are built {% endcomment %}
+            {% with density_models|get_name:"Murnaghan Equation" as model %}
             
-                <li><a href="{% url 'density:density_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
+                <li><a href="{% url 'density:murnaghan_equation' %}">{{ model }}</a> - {{ model.brief_description }}</li>
+
+            {% endwith %}
                 
-            {% endfor %}
             
         </ul>
 
         <h3><a href="{% url 'cetaneNumber:cetaneNumber' %}">Cetane Number</a></h3>
         <ul>
 
+            {% comment %} #TODO: Apply same structure used in density {% endcomment %}
             {% for model in cetane_number_models %}
             
                 <li><a href="{% url 'cetaneNumber:cetaneNumber_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
@@ -36,6 +40,7 @@
         <h3><a href="{% url 'pluggingPoint:pluggingPoint' %}">Cold Filter Plugging Point (CFPP)</a></h3>
         <ul>
 
+            {% comment %} #TODO: Apply same structure used in density {% endcomment %}
             {% for model in plugging_point_models %}
             
                 <li><a href="{% url 'pluggingPoint:pluggingPoint_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
