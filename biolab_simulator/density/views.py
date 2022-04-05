@@ -88,7 +88,7 @@ class MurnaghanEquation(DetailView):
 
         return render(request, self.template_name, self.context)
 
-    #TODO: After structure is done, add new compounds and parameters and build some tests
+    #TODO: Add new compounds and parameters and build some tests
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             form = request.POST.dict()
@@ -135,6 +135,6 @@ class MurnaghanEquation(DetailView):
                 messages.success(self.request,
                 "Property predicted successfully.")
 
-            self.context['result'] = murnaghan_equation_predict(intensive_parameters, compounds, self.model)
+            self.context['result'] = murnaghan_equation_predict(intensive_parameters, compounds)
 
             return render(request, self.template_name, self.context)
