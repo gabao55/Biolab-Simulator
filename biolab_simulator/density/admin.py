@@ -39,6 +39,7 @@ class CompoundAdmin(admin.ModelAdmin):
     inlines = [
         ParametersInline
     ]
+    ordering = ('esther_type', 'name')
 
 
 class ParameterAdmin(admin.ModelAdmin):
