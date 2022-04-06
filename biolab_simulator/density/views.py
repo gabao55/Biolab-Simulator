@@ -88,7 +88,7 @@ class MurnaghanEquation(DetailView):
 
         return render(request, self.template_name, self.context)
 
-    #TODO: Add new compounds and parameters and build some tests
+    #TODO: Build some tests
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             form = request.POST.dict()
