@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load density_filters %}
 
 {% block title %}Density | {{ model.name }}{% endblock title %}
 
@@ -86,9 +87,31 @@
                 {% endif %}
 
                 {% comment %} #TODO: Set style for labels and fields {% endcomment %}
-                {% for compound in model.compound_set.all %}
+                {% for compound in model.compound_set.all|get_compounds:"FAME" %}
 
-                    {% comment %} #TODO: Separate compounds by esther type (make interface cleaner) {% endcomment %}
+                    <label for="{{ compound.esther_type }} {{ compound.name }}">
+                        {{ compound.esther_type}} {{ compound.name }}
+                    </label>
+                    <input type='number' min='0' max='100' placeholder='0'
+                    name="{{ compound.esther_type }} {{ compound.name }}"><br>
+
+                {% endfor %}
+
+                {% comment %} #TODO: Separate esther types {% endcomment %}
+
+                {% for compound in model.compound_set.all|get_compounds:"FAEE" %}
+
+                    <label for="{{ compound.esther_type }} {{ compound.name }}">
+                        {{ compound.esther_type}} {{ compound.name }}
+                    </label>
+                    <input type='number' min='0' max='100' placeholder='0'
+                    name="{{ compound.esther_type }} {{ compound.name }}"><br>
+
+                {% endfor %}
+
+
+                {% for compound in model.compound_set.all|get_compounds:"Glyceride" %}
+
                     <label for="{{ compound.esther_type }} {{ compound.name }}">
                         {{ compound.esther_type}} {{ compound.name }}
                     </label>
