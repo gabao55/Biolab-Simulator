@@ -33,6 +33,8 @@ class MurnaghanEquation(DetailView):
 
     def get(self, request, *args, **kwargs):
 
+        self.context['result'] = None
+
         return render(request, self.template_name, self.context)
 
     #TODO: Build some tests

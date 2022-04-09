@@ -6,9 +6,11 @@
 
     <h2>Predict</h2>
 
-    <p>Insert your parameters to predict the density of your biodiesel:<p>
+    {% if result %}
 
-        {% if messages %}
+        <h1>Predicted density</h1>
+
+            {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
                     <div class="container-fluid p-0">
@@ -19,7 +21,11 @@
                     </div>
                 {% endfor %}
             </ul>
-        {% endif %}
+            {% endif %}
+            
+        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }} kg/m³</h2>
+
+    {% endif %}
 
     <div class="form-center">
         <form action="." method="POST">
@@ -90,12 +96,5 @@
             <input type="submit" value="Predict density">
         </form>
     </div>
-
-    {% if result %}
-
-        <h1>Predicted density</h1>
-        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }} kg/m³<h2>
-
-    {% endif %}
 
 {% endblock prediction_form %}
