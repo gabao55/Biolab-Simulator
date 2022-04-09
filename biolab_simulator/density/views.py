@@ -21,7 +21,7 @@ class Density(View):
 
 
 class MurnaghanEquation(DetailView):
-    template_name = 'density/model.html'
+    template_name = 'density/murnaghan_equation.html'
     model = get_object_or_404(models.PredictiveModel,
         name='Murnaghan Equation')
 
