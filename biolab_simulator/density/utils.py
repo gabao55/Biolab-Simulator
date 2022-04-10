@@ -26,4 +26,4 @@ def murnaghan_equation_predict(intensive_parameters: Dict, compounds: Dict) -> f
 
     density = atm_density*(num/den)
 
-    return density
+    return round(density, 3)
