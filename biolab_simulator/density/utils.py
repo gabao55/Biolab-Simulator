@@ -24,6 +24,7 @@ def murnaghan_equation_predict(intensive_parameters: Dict, compounds: Dict) -> f
         num += xi*Ai
         den += xi*Ai*(1 + Bi*pressure)**Ci
 
+    # It is getting to complex numbers in the den
     density = atm_density*(num/den.real)
 
     return round(density, 3)
