@@ -42,9 +42,9 @@ class MurnaghanEquation(DetailView):
         if request.method == 'POST':
             form = request.POST.dict()
             
-            intensive_parameters = {"Temperature": int(form["Temperature (K)"]) if form['Temperature (K)'] else '',
-            "Pressure": int(form["Pressure (MPa)"]) if form["Pressure (MPa)"] else '',
-            "Atmospheric density": int(form["Atmospheric density (kg/m³)"]) if form["Atmospheric density (kg/m³)"] else '',
+            intensive_parameters = {"Temperature": float(form["Temperature (K)"]) if form['Temperature (K)'] else '',
+            "Pressure": float(form["Pressure (MPa)"]) if form["Pressure (MPa)"] else '',
+            "Atmospheric density": float(form["Atmospheric density (kg/m³)"]) if form["Atmospheric density (kg/m³)"] else '',
             }
 
             form.pop("Temperature (K)")
@@ -54,9 +54,9 @@ class MurnaghanEquation(DetailView):
             compounds = {}
             sum = 0
             for compound, value in form.items():
-                if compound != 'csrfmiddlewaretoken' and value and int(value):
-                    compounds[compound] = {'composition': int(value)}
-                    sum += int(value)
+                if compound != 'csrfmiddlewaretoken' and value and float(value):
+                    compounds[compound] = {'composition': float(value)}
+                    sum += float(value)
 
                     parameters_set = self.model.compound_set.get(esther_type=compound.split(' ')[0], name=compound.split(' ')[1]).parameter_set.all()
 
