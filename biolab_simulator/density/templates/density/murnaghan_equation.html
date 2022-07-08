@@ -58,43 +58,33 @@
             
             {% endif %}
 
-            <div class="form-center">
-                {% for compound in model.compound_set.all|get_compounds:"FAME" %}
-
-                    <label for="{{ compound.esther_type }} {{ compound.name }}">
-                        {{ compound.esther_type}} {{ compound.name }}
-                    </label>
-                    <input type='number' min='0' max='100' placeholder='0'
-                    name="{{ compound.esther_type }} {{ compound.name }}" step="0.000001"><br>
-
-                {% endfor %}
-
-                {% comment %} #TODO: Separate esther types {% endcomment %}
-
-                {% for compound in model.compound_set.all|get_compounds:"FAEE" %}
-
-                    <label for="{{ compound.esther_type }} {{ compound.name }}">
-                        {{ compound.esther_type}} {{ compound.name }}
-                    </label>
-                    <input type='number' min='0' max='100' placeholder='0'
-                    name="{{ compound.esther_type }} {{ compound.name }}" step="0.000001"><br>
-
-                {% endfor %}
-
-
-                {% for compound in model.compound_set.all|get_compounds:"Glyceride" %}
-
-                    <label for="{{ compound.esther_type }} {{ compound.name }}">
-                        {{ compound.esther_type}} {{ compound.name }}
-                    </label>
-                    <input type='number' min='0' max='100' placeholder='0'
-                    name="{{ compound.esther_type }} {{ compound.name }}" step="0.000001"><br>
-
-                {% endfor %}
+            <div class="add-compound">
+                <label for="Add compound to mixture:">Add compound to mixture:</label>
+                <select name="compounds">
+                    {% for compound in model.compound_set.all|get_compounds:"FAME" %}
+                    
+                    <option value="{{ compound.esther_type }} {{ compound.name }}">{{ compound.esther_type}} {{ compound.name }}</option>
+    
+                    {% endfor %}
+                    {% for compound in model.compound_set.all|get_compounds:"FAEE" %}
+                    
+                    <option value="{{ compound.esther_type }} {{ compound.name }}">{{ compound.esther_type}} {{ compound.name }}</option>
+    
+                    {% endfor %}
+                    {% for compound in model.compound_set.all|get_compounds:"Glyceride" %}
+                    
+                    <option value="{{ compound.esther_type }} {{ compound.name }}">{{ compound.esther_type}} {{ compound.name }}</option>
+    
+                    {% endfor %}
+                </select>
+                <div onclick="addCompound();">Add</div>
             </div>
+
+            <div class="form-center added-compounds">   </div>
 
             <input type="submit" value="Predict density">
         </form>
     </div>
+    <script src="{% static 'assets/js/murnaghan.js' %}"></script>
 
 {% endblock prediction_form %}

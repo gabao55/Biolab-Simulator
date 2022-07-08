@@ -3,42 +3,24 @@
 }
 
 .content .add-compound {
-    margin-bottom: 10px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.content .add-compound label {
-    margin-right: 20px;
-}
-
-.content .add-compound select {
-    height: 30px;
-    font-weight: 100;
-    background-color: white;
-    border: 1px solid var(--primary-green);
+    width: 20px;
+    height: 15px;
+    border: 2px solid var(--primary-green);
     border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.5s ease;
+    color: black;
     text-align: center;
-}
-
-.content .add-compound > div {
-    margin-left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    font-size: 12px;
 }
 
 .content .form-center h2 {
     text-align: center;
 }
 
+.content .form-center label {
+    font-size: 3rem;
+}
+
 .content .form-center input[type=number] {
-    margin-bottom: 5px;
     width: 100px;
     height: 40px;
     border: 2px solid var(--primary-green);

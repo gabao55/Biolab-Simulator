@@ -50,6 +50,7 @@ class MurnaghanEquation(DetailView):
             form.pop("Temperature (K)")
             form.pop("Pressure (MPa)")
             form.pop("Atmospheric density (kg/m³)")
+            form.pop("compounds")
 
             compounds = {}
             sum = 0
