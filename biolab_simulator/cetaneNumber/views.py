@@ -15,10 +15,23 @@ class CetaneNumber(View):
 
 class PredictiveModel(DetailView):
     model = models.PredictiveModel
-    template_name = 'cetaneNumber/model.html'
+    template_name = 'cetaneNumber/lapuerta_rodriguez.html'
     context_object_name = 'model'
 
     def get_object(self):
         self.model = get_object_or_404(models.PredictiveModel,
         name=self.kwargs['name'])
         return self.model
+
+
+class LapuertaRodriguez(DetailView):
+    template_name = "cetaneNumber/lapuerta_rodriguez.html"
+    model = get_object_or_404(models.PredictiveModel,
+        name = "La Puerta, Rodríguez and Mora")
+
+    context = {
+        "model": model,
+    }
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, self.context)

@@ -6,6 +6,7 @@
     margin-bottom: 10px;
     font-size: 20px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -14,8 +15,9 @@
     margin-right: 20px;
 }
 
-.content .add-compound select {
+.content .add-compound select, input {
     height: 30px;
+    margin-right: 20px;
     font-weight: 100;
     background-color: white;
     border: 1px solid var(--primary-green);
@@ -25,12 +27,20 @@
     text-align: center;
 }
 
-.content .add-compound > div {
-    margin-left: 20px;
+.content .add-compound .add-button {
+    padding: 8px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border: 3px solid var(--primary-green);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+.content .form-center .add-button:hover {
+    background: var(--primary-green);
+    color: var(--white-color);
 }
 
 .content .form-center h2 {
@@ -69,4 +79,12 @@
 .content .form-center input[type=submit]:hover {
     background: var(--primary-green);
     color: var(--white-color);
+}
+
+.content .add-esther {
+    flex-direction: column;
+}
+
+.content .add-esther div {
+    margin-top: 20px;
 }

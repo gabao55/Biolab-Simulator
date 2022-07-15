@@ -1,0 +1,38 @@
+{% extends 'cetaneNumber/model.html' %}
+{% load static %}
+
+{% block prediction_form %}
+
+    <h2>Predict</h2>
+
+    <div class="form-center">
+
+            <div class="add-compound add-esther">
+                <label for="Add compound to mixture">Add compound to mixture:</label>
+                <div>
+                    <label for="Esther type">Esther type</label>
+                    <select name="esther-type">
+                        <option value="2">Ethyl</option>
+                        <option value="3">Propyl</option>
+                        <option value="4">Butyl</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="Carbons number">Number of carbons</label>
+                    <input type="number" name="carbons-number" />
+                </div>
+                <div>
+                    <label for="Carbons number">Number of double bounds</label>
+                    <input type="number" name="double-bounds-number" />                    
+                </div>
+                <div onclick="addCompound();" class="add-button">Add</div>
+            </div>
+
+            <div class="form-center added-compounds"></div>
+
+            <input type="submit" value="Predict cetane number">
+        </form>
+    </div>
+    <script src="{% static 'assets/js/lapuertaRodriguez.js' %}"></script>
+
+{% endblock prediction_form %}
