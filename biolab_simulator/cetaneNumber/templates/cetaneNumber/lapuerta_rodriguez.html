@@ -5,13 +5,35 @@
 
     <h2>Predict</h2>
 
-    <div class="form-center">
+    {% if result %}
 
+        <h1>Predicted cetane number</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="container-fluid p-0">
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }}</h2>
+
+    {% endif %}
+
+    <div class="form-center">
+        <form action="." method="POST">
+            {% csrf_token %}
             <div class="add-compound add-esther">
                 <label for="Add compound to mixture">Add compound to mixture:</label>
                 <div>
                     <label for="Esther type">Esther type</label>
-                    <select name="esther-type">
+                    <select id="Esther type">
                         <option value="2">Ethyl</option>
                         <option value="3">Propyl</option>
                         <option value="4">Butyl</option>
@@ -19,18 +41,18 @@
                 </div>
                 <div>
                     <label for="Carbons number">Number of carbons</label>
-                    <input type="number" name="carbons-number" />
+                    <input id="carbons-number" type="number" />
                 </div>
                 <div>
-                    <label for="Carbons number">Number of double bounds</label>
-                    <input type="number" name="double-bounds-number" />                    
+                    <label for="Double bounds">Number of double bounds</label>
+                    <input id="double-bounds-number" type="number" />                    
                 </div>
                 <div onclick="addCompound();" class="add-button">Add</div>
             </div>
 
             <div class="form-center added-compounds"></div>
 
-            <input type="submit" value="Predict cetane number">
+            <input type="submit" value="Predict cetane number" />
         </form>
     </div>
     <script src="{% static 'assets/js/lapuertaRodriguez.js' %}"></script>

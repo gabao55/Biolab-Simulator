@@ -6,8 +6,8 @@ function addCompound() {
     const compounds = document.querySelector(".added-compounds");
     const addedCompound = document.querySelector(".add-compound");
     const estherType = addedCompound.querySelector("select").value;
-    const carbonsNumber = addedCompound.querySelector("input[name=carbons-number]").value;
-    const doubleBonds = addedCompound.querySelector("input[name=double-bounds-number]").value;
+    const carbonsNumber = addedCompound.querySelector("input[id=carbons-number]").value;
+    const doubleBonds = addedCompound.querySelector("input[id=double-bounds-number]").value;
 
     if (checkInputs(carbonsNumber, doubleBonds) === false) {
         alert("Please fill all fields to proceed.");
@@ -49,20 +49,23 @@ function addCompound() {
         <label for="${estherName}">
             ${estherName + " parameter"}
         </label>
-        <input type='number' value=${estherType} readonly>
-        <label for="${"Carbons number" + String(compoundIndex)}">
+        <input name="${"Esther parameter " + String(compoundIndex)}" type='number' value=${estherType} readonly>
+        <label for="${"Carbons number " + String(compoundIndex)}">
             Carbons number
         </label>
-        <input type='number' value=${carbonsNumber} min="1">
-        <label for="${"Double bonds" + String(compoundIndex)}">
+        <input name="${"Carbons number " + String(compoundIndex)}" type='number' value=${carbonsNumber} min="1">
+        <label for="${"Double bonds " + String(compoundIndex)}">
             Double bond
         </label>
-        <input type='number' value=${doubleBonds} min=0 max=${carbonsNumber - 1}>
+        <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0 max=${carbonsNumber - 1}>
+        <label for="${"Volume % " + String(compoundIndex)}">
+            Mixture's volume %
+        </label>
+        <input name="${"Volume % " + String(compoundIndex)}" type='number' placeholder='0' min=0 max=100 value=0>
         <br>
     `;
 
     compoundIndex ++;
-
 }
 
 function checkInputs(carbonsNumber, doubleBonds) {

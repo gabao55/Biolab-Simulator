@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView, View
+from django.contrib import messages
 from . import models
+from .utils import lapuerta_rodriguez_predict
 
 
 class CetaneNumber(View):
@@ -34,4 +36,23 @@ class LapuertaRodriguez(DetailView):
     }
 
     def get(self, request, *args, **kwargs):
+
+        self.context['result'] = None
+
         return render(request, self.template_name, self.context)
+    
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = request.POST.dict()
+            form.pop("csrfmiddlewaretoken")
+
+            if not form:
+                return render(request, self.template_name, self.context)
+
+            self.context['result'], volumes = lapuerta_rodriguez_predict(form)
+
+            if sum(volumes) != 100:
+                messages.warning(self.request,
+                "The sum of compounds' volume percentage is not equal to 100%, this might affect the property predicted.")
+
+            return render(request, self.template_name, self.context)
