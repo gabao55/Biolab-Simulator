@@ -1,7 +1,4 @@
 from http.client import HTTPResponse
-from multiprocessing import context
-from unittest import result
-from urllib import request
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
