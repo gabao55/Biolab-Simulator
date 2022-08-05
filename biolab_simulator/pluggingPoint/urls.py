@@ -5,5 +5,5 @@ app_name = 'pluggingPoint'
 
 urlpatterns = [
     path('', views.PluggingPoint.as_view(), name='pluggingPoint'),
-    path('<str:name>/', views.PredictiveModel.as_view(), name='pluggingPoint_model'),
+    path('Su-Liu-Correlation/', views.SuLiu.as_view(), name="su_liu"),
 ]

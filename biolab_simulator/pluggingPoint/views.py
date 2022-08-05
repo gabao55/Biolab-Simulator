@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView, View
+
+from .utils import su_liu_predict
 from . import models
 
 def pluggingPoint(request):
@@ -27,3 +29,30 @@ class PredictiveModel(DetailView):
         self.model = get_object_or_404(models.PredictiveModel,
         name=self.kwargs['name'])
         return self.model
+
+
+class SuLiu(DetailView):
+    template_name = "pluggingPoint/su_liu.html"
+    model = get_object_or_404(models.PredictiveModel,
+        name = "Su and Liu Correlation")
+
+    context = {
+        "model": model,
+    }
+
+    def get(self, request, *args, **kwargs):
+
+        self.context['result'] = None
+
+        return render(request, self.template_name, self.context)
+    
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = request.POST.dict()
+
+            self.context['result'] = su_liu_predict(form)
+
+            if not form:
+                return render(request, self.template_name, self.context)
+
+            return render(request, self.template_name, self.context)

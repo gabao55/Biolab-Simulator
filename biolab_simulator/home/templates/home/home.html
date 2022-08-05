@@ -31,7 +31,7 @@
             {% comment %} #TODO: Apply same structure used in density {% endcomment %}
             {% for model in cetane_number_models %}
             
-                <li><a href="{% url 'cetaneNumber:cetaneNumber_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
+                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
                 
             {% endfor %}
             
@@ -43,7 +43,7 @@
             {% comment %} #TODO: Apply same structure used in density {% endcomment %}
             {% for model in plugging_point_models %}
             
-                <li><a href="{% url 'pluggingPoint:pluggingPoint_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
+                <li><a href="{% url 'pluggingPoint:su_liu' %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
                 
             {% endfor %}
             

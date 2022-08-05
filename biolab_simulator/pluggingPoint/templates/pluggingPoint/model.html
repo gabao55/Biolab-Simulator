@@ -8,8 +8,12 @@
     <section class="content">
         <div class="responsive-space"></div>
         <h1>{{ model.name }}</h1>
+
+        <h2>About</h2>
         
         {{ model.description|safe }}
+
+        <h2>Equations</h2>
         
         {% with model.equation_set.all as equations %}
         
@@ -20,6 +24,8 @@
             {% endfor %}
         
         {% endwith %}
+
+        <h2>Graphs</h2>
         
         {% with model.graph_set.all as graphs %}
         
@@ -32,7 +38,8 @@
         
         {% endwith %}
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident earum doloribus voluptatibus magnam voluptas, obcaecati impedit hic distinctio dicta dolorum quis possimus quidem magni labore culpa, amet laudantium sed? Nam.</p>
+        {% block prediction_form %}{% endblock prediction_form %}
+
     </section>
 
 {% endblock content %}

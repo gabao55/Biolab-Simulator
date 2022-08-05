@@ -1,0 +1,54 @@
+{% extends 'pluggingPoint/model.html' %}
+{% load static %}
+
+{% block prediction_form %}
+
+    <h2>Predict</h2>
+
+    {% if result %}
+
+        <h1>Predicted CFPP</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="container-fluid p-0">
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }} K</h2>
+
+    {% endif %}
+
+    <div class="form-center">
+        <form action="." method="POST">
+
+            {% csrf_token %}
+            
+            <h2>Input parameters</h2>
+
+            <div class="form-center added-compounds">
+                <label for="Content of unsaturated">
+                    Content of unsaturated FAME's
+                </label>
+                <input name="Content of unsaturated" type='number' placeholder="0" min="0" max="100" required>
+                <br>
+                <label for="Carbon atoms">
+                    Weighted-average number of carbon atoms
+                </label>
+                <input name="Carbon atoms" type='number' placeholder="1" min="1" required>
+                <br>
+            </div>
+
+            <input type="submit" value="Predict CFPP" />
+        </form>
+    </div>
+    <script src="{% static 'assets/js/murnaghan.js' %}"></script>
+
+{% endblock prediction_form %}

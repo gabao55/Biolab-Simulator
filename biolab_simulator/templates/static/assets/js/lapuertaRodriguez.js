@@ -30,12 +30,6 @@ function addCompound() {
 
     isCompoundAdded = checkRepetitiveCompound(compoundDetails);
 
-    // for (let i = 0; i < allCompounds.length; i++) {
-    //     if (allCompounds[i] === compoundDetails) {
-    //         return isCompoundAdded = true;
-    //     }
-    // }
-
     if (isCompoundAdded) {
         alert("Compound already added.");
         isCompoundAdded = false;
