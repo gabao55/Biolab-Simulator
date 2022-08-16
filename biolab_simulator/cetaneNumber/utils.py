@@ -23,11 +23,18 @@ def lapuerta_rodriguez_predict(data):
 
     volumes = [(lambda x: x/100)(x) for x in volumes]
     
-    return round(mixing_rule(volumes, cetane_numbers), 1), volumes
+    return round(volume_mixing_rule(volumes, cetane_numbers), 1), volumes
 
-def mixing_rule(volumes, cetane_numbers):
+def volume_mixing_rule(volumes, cetane_numbers):
     resultado = 0
     for i in range(len(volumes)):
         resultado += volumes[i]*cetane_numbers[i]
+
+    return resultado
+
+def mass_mixing_rule(masses, cetane_numbers):
+    resultado = 0
+    for i in range(len(masses)):
+        resultado += masses[i]*cetane_numbers[i]
 
     return resultado

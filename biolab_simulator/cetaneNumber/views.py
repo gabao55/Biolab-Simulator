@@ -51,7 +51,7 @@ class LapuertaRodriguez(DetailView):
 
             self.context['result'], volumes = lapuerta_rodriguez_predict(form)
 
-            if sum(volumes) != 100:
+            if sum(volumes) != 1:
                 messages.warning(self.request,
                 "The sum of compounds' volume percentage is not equal to 100%, this might affect the property predicted.")
 
