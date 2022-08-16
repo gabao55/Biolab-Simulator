@@ -16,7 +16,7 @@ def lapuerta_rodriguez_predict(data):
         D_parameter = 0.235 - 0.107*(esther_parameter - 1)
         E_parameter = -0.099
 
-        cetane_number = A_parameter + (B_parameter + C_parameter*number_of_double_bonds + C_parameter*number_of_double_bonds**2)*carbons_number + E_parameter*carbons_number**2
+        cetane_number = A_parameter + (B_parameter + C_parameter*number_of_double_bonds + D_parameter*number_of_double_bonds**2)*carbons_number + E_parameter*carbons_number**2
 
         cetane_numbers.append(cetane_number)
         volumes.append(volume_percentage)
