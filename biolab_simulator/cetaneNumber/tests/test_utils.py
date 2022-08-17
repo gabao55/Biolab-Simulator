@@ -1,4 +1,4 @@
-from django.test import SimpleTestCase, TestCase
+from django.test import SimpleTestCase
 from ..utils import lapuerta_rodriguez_predict
 
 
