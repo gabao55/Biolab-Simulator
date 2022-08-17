@@ -22,7 +22,7 @@
             </ul>
             {% endif %}
             
-        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }} K</h2>
+        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }} °C</h2>
 
     {% endif %}
 
@@ -37,12 +37,12 @@
                 <label for="Content of unsaturated">
                     Content of unsaturated FAME's
                 </label>
-                <input name="Content of unsaturated" type='number' placeholder="0" min="0" max="100" required>
+                <input name="Content of unsaturated" type='number' placeholder="0" min="0" max="100" step="0.01" required>
                 <br>
                 <label for="Carbon atoms">
                     Weighted-average number of carbon atoms
                 </label>
-                <input name="Carbon atoms" type='number' placeholder="1" min="1" required>
+                <input name="Carbon atoms" type='number' placeholder="1" min="1" step="0.01" required>
                 <br>
             </div>
 
