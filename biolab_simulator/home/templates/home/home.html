@@ -8,11 +8,11 @@
 
     <section class="content">
         <div class="responsive-space"></div>
-        <h1>Biolab Simulator (BLSIM)</h1>
+        <h1>Simulador Biolab (BLSIM)</h1>
         
         {{ home.intro|safe }}
 
-        <h3><a href="{% url 'density:density' %}">Density</a></h3>
+        <h3><a href="{% url 'density:density' %}">Massa específica</a></h3>
         <ul>
 
             {% comment %} #TODO: Add other predictive models to the list once their views are built {% endcomment %}
@@ -25,7 +25,7 @@
             
         </ul>
 
-        <h3><a href="{% url 'cetaneNumber:cetaneNumber' %}">Cetane Number</a></h3>
+        <h3><a href="{% url 'cetaneNumber:cetaneNumber' %}">Número de cetano</a></h3>
         <ul>
 
             {% comment %} #TODO: Apply same structure used in density {% endcomment %}
@@ -37,7 +37,7 @@
             
         </ul>
 
-        <h3><a href="{% url 'pluggingPoint:pluggingPoint' %}">Cold Filter Plugging Point (CFPP)</a></h3>
+        <h3><a href="{% url 'pluggingPoint:pluggingPoint' %}">Ponto de entupimento de filtro a frio (CFPP)</a></h3>
         <ul>
 
             {% comment %} #TODO: Apply same structure used in density {% endcomment %}

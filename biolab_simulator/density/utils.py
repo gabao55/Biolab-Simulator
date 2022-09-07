@@ -28,3 +28,6 @@ def murnaghan_equation_predict(intensive_parameters: Dict, compounds: Dict) -> f
     density = atm_density*(num/den.real)
 
     return round(density, 3)
+
+def chhetri_watts_predict(temperature, pressure) -> float:
+    return round(1036+0.00423*pressure-0.643*temperature, 3)

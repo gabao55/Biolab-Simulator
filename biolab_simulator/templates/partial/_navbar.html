@@ -7,23 +7,23 @@
     <ul>
         <li class="option"><a href="{% url 'home:home' %}">Home</a></li>
         <li class="option">
-            <a href="{% url 'density:density' %}">Density <i class="arrow down"></i></a>
+            <a href="{% url 'density:density' %}">Massa específica <i class="arrow down"></i></a>
             <ul>
                 <li><a href="{% url 'density:murnaghan_equation' %}">Murnaghan</a></li>
-                <li><a href="#">Eq 2</a></li>
+                <li><a href="{% url 'density:chhetri_watts' %}">Regressão</a></li>
                 <li><a href="#">Eq 3</a></li>
             </ul>
         </li>
         <li class="option">
-            <a href="{% url 'pluggingPoint:pluggingPoint' %}">Plugging point <i class="arrow down"></i></a>
+            <a href="{% url 'pluggingPoint:pluggingPoint' %}">CFPP <i class="arrow down"></i></a>
             <ul>
-                <li><a href="{% url 'pluggingPoint:su_liu' %}">Su and Liu</a></li>
+                <li><a href="{% url 'pluggingPoint:su_liu' %}">Su e Liu</a></li>
                 <li><a href="#">Eq 2</a></li>
                 <li><a href="#">Eq 3</a></li>
             </ul>
         </li>
         <li class="option">
-            <a href="{% url 'cetaneNumber:cetaneNumber' %}">Cetane number <i class="arrow down"></i></a>
+            <a href="{% url 'cetaneNumber:cetaneNumber' %}">Número de cetano <i class="arrow down"></i></a>
             <ul>
                 <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">Lapuerta et al.</a></li>
                 <li><a href="#">Eq 2</a></li>

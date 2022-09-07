@@ -53,6 +53,6 @@ class LapuertaRodriguez(DetailView):
 
             if sum(volumes) != 1:
                 messages.warning(self.request,
-                "The sum of compounds' volume percentage is not equal to 100%, this might affect the property predicted.")
+                "A soma da porcentagem de volume dos compostos não é igual a 100%, isso pode afetar a propriedade prevista.")
 
             return render(request, self.template_name, self.context)

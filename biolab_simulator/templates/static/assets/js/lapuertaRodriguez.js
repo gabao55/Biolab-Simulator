@@ -41,19 +41,19 @@ function addCompound() {
     const form = document.querySelector(".added-compounds");
     form.innerHTML += `
         <label for="${estherName}">
-            ${estherName + " parameter"}
+            ${"Parâmetro do " + estherName}
         </label>
         <input name="${"Esther parameter " + String(compoundIndex)}" type='number' value=${estherType} readonly>
         <label for="${"Carbons number " + String(compoundIndex)}">
-            Carbons number
+            Número de carbonos
         </label>
         <input name="${"Carbons number " + String(compoundIndex)}" type='number' value=${carbonsNumber} min="1">
         <label for="${"Double bonds " + String(compoundIndex)}">
-            Double bond
+            Número de duplas ligações
         </label>
         <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0 max=${carbonsNumber - 1}>
         <label for="${"Volume % " + String(compoundIndex)}">
-            Mixture's volume %
+            % em volume
         </label>
         <input name="${"Volume % " + String(compoundIndex)}" type='number' placeholder='0' min=0 max=100 value=0>
         <br>

@@ -8,38 +8,43 @@
 
     <section class="content">
         <div class="responsive-space"></div>
-        <h1>Density</h1>
-        <h2>About</h2>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; Knowledge of the density of a fuel is an extremely important factor in determining whether 
-            there will be good operation of an engine. The power produced by the engine is directly proportional to the mass of fuel burned.
-            As the injection pump feeds constant volumes of diesel oil to the engine, the density influences the injected mass which,
-            in turn, defines the power produced and the specific volumetric consumption of diesel oil. So the density must be
-            controlled in a range to avoid variations in power for the same volume injected into the chamber (FARAH, 2015).</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; According to ANP's (Brazilian National Agency of Petroleum) specifications, this density range at 20°C covers values ​​
-            from 850 to 900 kg/m³. As previously described, within the allowed range, a higher density reduces specific consumption and 
-            increases the power generated, however, increases CO, hydrocarbon and particulate emissions, which are harmful to the environment.</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; Overall, temperature, pressure and composition of biodiesel are the main factors that determine its density,
-            so that the higher the temperature, or the lower the pressure, the higher the density, thus, there are in the literature
-            correlations that determine the density from these parameters (CHHETRI and WATTS, 2012). Another type of
-            model widely used for this purpose is based on Equations of State (EoS), such as the Equation of State
-            of Translated Volume (VTPR EoS) (SCHMID and GMEHLING, 2010).</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; There are also models based exclusively on the molecular structure of the components of a liquid to predict its
-            molar volume, which makes up the contribution methods of GCVOL groups, from which these models are used to
-            determine the biodiesel density over a temperature range. The first method to adopt this strategy
-            (ELBRO, FREDENSLUND and RASMUSSEN, 1991), showed great accuracy, later suffering some
-            new modifications with updates of the parameter values ​​for the contributing groups (PRATAS, FREITAS, et al., 2011).</p>
-        <p>&nbsp; &nbsp; &nbsp; &nbsp; Finally, another model widely used to predict the biodiesel density takes into account the structure
-            of the compound, but with a different approach than group contribution methods. The strategy consists
-            in evaluating the chain length, which is, the number of carbons present in the compound and the number of unsaturations
-            present in the molecule (LAPUERTA, RODRÍGUEZ-FERNÁNDEZ and ARMAS, 2010), thus being able to apply mixing rules
-            in the case of biodiesel, since it is a mixture of several esters.</p>
-        <h2>Models available</h2>
+        <h1>Massa específica</h1>
+        <h2>Sobre</h2>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; O conhecimento da densidade de um combustível é um fator extremamente importante para determinar se
+            haverá bom funcionamento de um motor. A potência produzida pelo motor é diretamente proporcional à massa de combustível queimada.
+            Como a bomba injetora alimenta o motor com volumes constantes de óleo diesel, a densidade influencia a massa injetada que,
+            por sua vez, define a potência produzida e o consumo volumétrico específico de óleo diesel. Então a densidade deve ser
+            controlado em uma faixa para evitar variações de potência para o mesmo volume injetado na câmara (FARAH, 2015).</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; De acordo com as especificações da ANP (Agência Nacional do Petróleo), essa faixa de densidade a 20°C abrange valores
+            de 850 a 900 kg/m³. Conforme descrito anteriormente, dentro da faixa permitida, uma densidade maior reduz o consumo específico e
+            aumenta a energia gerada, no entanto, aumenta as emissões de CO, hidrocarbonetos e partículas, que são prejudiciais ao meio ambiente.</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; No geral, temperatura, pressão e composição do biodiesel são os principais fatores que determinam sua densidade,
+            de modo que quanto maior a temperatura, ou quanto menor a pressão, maior a densidade, assim, existem na literatura
+            correlações que determinam a densidade desses parâmetros (CHHETRI e WATTS, 2012). Outro tipo de
+            modelo amplamente utilizado para este fim é baseado em Equações de Estado (EoS), como a Equação de Estado
+            de Volume Traduzido (VTPR EoS) (SCHMID e GMEHLING, 2010).</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; Existem também modelos baseados exclusivamente na estrutura molecular dos componentes de um líquido para prever sua
+            volume molar, que compõe os métodos de contribuição dos grupos GCVOL, a partir dos quais esses modelos são usados ​​para
+            determinar a densidade do biodiesel em uma faixa de temperatura. O primeiro método a adotar esta estratégia
+            (ELBRO, FREDENSLUND e RASMUSSEN, 1991), mostrou grande precisão, sofrendo posteriormente alguns
+            novas modificações com atualizações dos valores dos parâmetros para os grupos contribuintes (PRATAS, FREITAS, et al., 2011).</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; Por fim, outro modelo amplamente utilizado para prever a densidade do biodiesel leva em consideração a estrutura
+            do composto, mas com uma abordagem diferente dos métodos de contribuição em grupo. A estratégia consiste
+            na avaliação do comprimento da cadeia, ou seja, o número de carbonos presentes no composto e o número de insaturações
+            presente na molécula (LAPUERTA, RODRÍGUEZ-FERNÁNDEZ e ARMAS, 2010), podendo assim aplicar regras de mistura
+            no caso do biodiesel, pois é uma mistura de vários ésteres.</p>
+        <h2>Modelos disponíveis</h2>
         <ul>
 
             {% comment %} #TODO: Add other predictive models to the list once their views are built {% endcomment %}
             {% with density_models|get_name:"Murnaghan Equation" as density_model %}
             
                 <li><a href="{% url 'density:murnaghan_equation' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
+
+            {% endwith %}
+            {% with density_models|get_name:"Chhetri & Watts" as density_model %}
+            
+                <li><a href="{% url 'density:chhetri_watts' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
 
             {% endwith %}
             

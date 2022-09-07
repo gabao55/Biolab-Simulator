@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, View
 from . import models
-from .utils import murnaghan_equation_predict
+from .utils import chhetri_watts_predict, murnaghan_equation_predict
 
 
 class Density(View):
@@ -22,7 +22,7 @@ class MurnaghanEquation(DetailView):
     model = get_object_or_404(models.PredictiveModel,
         name='Murnaghan Equation')
 
-    intensive_parameters = ['Temperature (K)', "Pressure (MPa)", "Atmospheric density (kg/m³)"]
+    intensive_parameters = ['Temperatura (K)', "Pressão (MPa)", "Massa específica atmosférica (kg/m³)"]
     context = {
         'model': model,
         'intensive_parameters': intensive_parameters,
@@ -34,19 +34,18 @@ class MurnaghanEquation(DetailView):
 
         return render(request, self.template_name, self.context)
 
-    #TODO: Build some tests
     def post(self, request, *args, **kwargs):
         if request.method == 'POST':
             form = request.POST.dict()
             
-            intensive_parameters = {"Temperature": float(form["Temperature (K)"]) if form['Temperature (K)'] else '',
-            "Pressure": float(form["Pressure (MPa)"]) if form["Pressure (MPa)"] else '',
-            "Atmospheric density": float(form["Atmospheric density (kg/m³)"]) if form["Atmospheric density (kg/m³)"] else '',
+            intensive_parameters = {"Temperature": float(form["Temperatura (K)"]) if form['Temperatura (K)'] else '',
+            "Pressure": float(form["Pressão (MPa)"]) if form["Pressão (MPa)"] else '',
+            "Atmospheric density": float(form["Massa específica atmosférica (kg/m³)"]) if form["Massa específica atmosférica (kg/m³)"] else '',
             }
 
-            form.pop("Temperature (K)")
-            form.pop("Pressure (MPa)")
-            form.pop("Atmospheric density (kg/m³)")
+            form.pop("Temperatura (K)")
+            form.pop("Pressão (MPa)")
+            form.pop("Massa específica atmosférica (kg/m³)")
             form.pop("compounds")
 
             compounds = {}
@@ -65,23 +64,48 @@ class MurnaghanEquation(DetailView):
             or not intensive_parameters['Pressure'] \
             or not intensive_parameters['Atmospheric density']:
                 messages.error(self.request,
-                "Please insert all intensive parameters to predict property")
+                "Insira todos os parâmetros intensivos para prever a propriedade")
 
                 return self.get(request, self.template_name)
             
             elif not compounds:
                 messages.error(self.request,
-                "Please insert compounds' mass percentage to predict property")
+                "Insira a porcentagem de massa dos compostos para prever a propriedade")
 
                 return self.get(request, self.template_name)
 
             elif sum != 100:
                 messages.warning(self.request,
-                "The sum of compounds' mass percentage is not equal to 100%, this might affect the property predicted.")
+                "A soma da porcentagem em massa dos compostos não é igual a 100%, isso pode afetar a propriedade prevista.")
             else:
                 messages.success(self.request,
-                "Property predicted successfully.")
+                "Propriedade prevista com sucesso.")
 
             self.context['result'] = murnaghan_equation_predict(intensive_parameters, compounds)
+
+            return render(request, self.template_name, self.context)
+
+class ChhetriWatts(DetailView):
+    template_name = 'density/chhetri_watts.html'
+    model = get_object_or_404(models.PredictiveModel,
+        name='Chhetri & Watts')
+    context = {
+        'model': model,
+    }
+
+    def get(self, request, *args, **kwargs):
+
+        self.context['result'] = None
+
+        return render(request, self.template_name, self.context)
+
+    def post(self, request, *args, **kwargs):
+        if request.method == "POST":
+            form = request.POST.dict()
+
+            temperature = float(form['Temperature'])
+            pressure = float(form['Pressure'])
+
+            self.context['result'] = chhetri_watts_predict(temperature, pressure)
 
             return render(request, self.template_name, self.context)

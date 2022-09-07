@@ -3,11 +3,11 @@
 
 {% block prediction_form %}
 
-    <h2>Predict</h2>
+    <h2>Cálculo da propriedade</h2>
 
     {% if result %}
 
-        <h1>Predicted cetane number</h1>
+        <h1>Número de cetano calculado</h1>
 
             {% if messages %}
             <ul class="messages">
@@ -30,29 +30,29 @@
         <form action="." method="POST">
             {% csrf_token %}
             <div class="add-compound add-esther">
-                <label for="Add compound to mixture">Add compound to mixture:</label>
+                <label for="Add compound to mixture">Adicionar composto à mistura:</label>
                 <div>
-                    <label for="Esther type">Esther type</label>
+                    <label for="Esther type">Tipo de ester</label>
                     <select id="Esther type">
-                        <option value="2">Ethyl</option>
-                        <option value="3">Propyl</option>
-                        <option value="4">Butyl</option>
+                        <option value="2">Etil</option>
+                        <option value="3">Propil</option>
+                        <option value="4">Butil</option>
                     </select>
                 </div>
                 <div>
-                    <label for="Carbons number">Number of carbons</label>
+                    <label for="Carbons number">Número de carbonos</label>
                     <input id="carbons-number" type="number" />
                 </div>
                 <div>
-                    <label for="Double bounds">Number of double bounds</label>
+                    <label for="Double bounds">Numero de ligações duplas</label>
                     <input id="double-bounds-number" type="number" />                    
                 </div>
-                <div onclick="addCompound();" class="add-button">Add</div>
+                <div onclick="addCompound();" class="add-button">Adicionar</div>
             </div>
 
             <div class="form-center added-compounds"></div>
 
-            <input type="submit" value="Predict cetane number" />
+            <input type="submit" value="Calcular número de cetano" />
         </form>
     </div>
     <script src="{% static 'assets/js/lapuertaRodriguez.js' %}"></script>

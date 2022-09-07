@@ -4,11 +4,11 @@
 
 {% block prediction_form %}
 
-    <h2>Predict</h2>
+    <h2>Cálculo da propriedade</h2>
 
     {% if result %}
 
-        <h1>Predicted density</h1>
+        <h1>Massa específica calculada</h1>
 
             {% if messages %}
             <ul class="messages">
@@ -34,7 +34,7 @@
             
             {% if intensive_parameters %}
             
-                <h2>Intensive parameters</h2>
+                <h2>Parâmetros intensivos</h2>
             
             {% endif %}
 
@@ -54,12 +54,12 @@
             
             {% if model.compound_set.all %}
             
-                <h2>Biodiesel composition</h2>
+                <h2>Composição do biodiesel</h2>
             
             {% endif %}
 
             <div class="add-compound">
-                <label for="Add compound to mixture:">Add compound to mixture:</label>
+                <label for="Add compound to mixture:">Adicionar composto à mistura:</label>
                 <select name="compounds">
                     {% for compound in model.compound_set.all|get_compounds:"FAME" %}
                     
@@ -77,12 +77,12 @@
     
                     {% endfor %}
                 </select>
-                <div onclick="addCompound();" class="add-button">Add</div>
+                <div onclick="addCompound();" class="add-button">Adicionar</div>
             </div>
 
             <div class="form-center added-compounds"></div>
 
-            <input type="submit" value="Predict density" />
+            <input type="submit" value="Calcular massa específica" />
         </form>
     </div>
     <script src="{% static 'assets/js/murnaghan.js' %}"></script>

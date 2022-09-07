@@ -9,11 +9,11 @@
         <div class="responsive-space"></div>
         <h1>{{ model.name }}</h1>
 
-        <h2>About</h2>
+        <h2>Sobre</h2>
         
         {{ model.description|safe }}
 
-        <h2>Equations</h2>
+        <h2>Equações</h2>
         
         {% with model.equation_set.all as equations %}
         
@@ -25,7 +25,7 @@
         
         {% endwith %}
 
-        <h2>Graphs</h2>
+        <h2>Gráficos</h2>
         
         {% with model.graph_set.all as graphs %}
         
