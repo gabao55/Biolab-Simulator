@@ -1,0 +1,60 @@
+{% extends 'density/model.html' %}
+{% load static %}
+{% load density_filters %}
+
+{% block prediction_form %}
+
+    <h2>Cálculo da propriedade</h2>
+
+    {% if result %}
+
+        <h1>CFPP calculada</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="container-fluid p-0">
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }} °C</h2>
+
+    {% endif %}
+
+    <div class="form-center">
+        <form action="." method="POST">
+
+            {% csrf_token %}
+            
+            {% if model.compound_set.all %}
+            
+                <h2>Composição do biodiesel</h2>
+            
+            {% endif %}
+
+            <div class="add-compound">
+                <label for="Add compound to mixture:">Adicionar composto à mistura:</label>
+                <select name="compounds">
+                    {% for compound in model.compound_set.all|get_compounds:"FAME" %}
+                    
+                    <option value="{{ compound.esther_type }} {{ compound.name }}">{{ compound.esther_type}} {{ compound.name }}</option>
+    
+                    {% endfor %}
+                </select>
+                <div onclick="addCompound();" class="add-button">Adicionar</div>
+            </div>
+
+            <div class="form-center added-compounds"></div>
+
+            <input type="submit" value="Calcular CFPP" />
+        </form>
+    </div>
+    <script src="{% static 'assets/js/liBing.js' %}"></script>
+
+{% endblock prediction_form %}

@@ -49,6 +49,11 @@
                 <li><a href="{% url 'pluggingPoint:sarin' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
 
             {% endwith %}
+            {% with predictive_models|get_name:"Li-Bing et al." as predictive_model %}
+            
+                <li><a href="{% url 'pluggingPoint:li_bing' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
+
+            {% endwith %}
             
         </ul>
     </section>

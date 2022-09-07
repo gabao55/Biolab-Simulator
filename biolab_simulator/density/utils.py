@@ -1,4 +1,3 @@
-from telnetlib import GA
 from typing import Dict
 
 def murnaghan_equation_predict(intensive_parameters: Dict, compounds: Dict) -> float:

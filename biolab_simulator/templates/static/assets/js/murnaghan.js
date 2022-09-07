@@ -1,6 +1,7 @@
 function addCompound() {
     const compound = document.querySelector(".add-compound select").value;
     if (!checkCompound(compound)) {
+        alert("Composto já inserido.");
         return
     }
 
