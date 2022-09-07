@@ -1,4 +1,5 @@
-from typing import Dict, Any
+from telnetlib import GA
+from typing import Dict
 
 def murnaghan_equation_predict(intensive_parameters: Dict, compounds: Dict) -> float:
     num = 0
@@ -29,5 +30,22 @@ def murnaghan_equation_predict(intensive_parameters: Dict, compounds: Dict) -> f
 
     return round(density, 3)
 
-def chhetri_watts_predict(temperature, pressure) -> float:
+def chhetri_watts_predict(temperature: float, pressure: float) -> float:
     return round(1036+0.00423*pressure-0.643*temperature, 3)
+
+def rackett_soave_predict(intensive_parameters: Dict, compounds: Dict) -> float:
+    density = 0
+    temperature = intensive_parameters['Temperature']
+    reference_temperature = intensive_parameters['Reference temperature']
+    reference_density = intensive_parameters['Reference density']
+
+    for parameters in compounds.values():
+        xi = parameters['composition']/100
+        Tc = parameters['Tc']
+        acentric_factor = parameters['acentric factor']
+        Gama = (1-temperature/Tc)**(2/7) - (1-reference_temperature/Tc)**(2/7)
+        Zra = 0.2908-0.099*acentric_factor+0.04*acentric_factor**2
+
+        density += xi*reference_density/(Zra**Gama)
+        
+    return round(density, 3)

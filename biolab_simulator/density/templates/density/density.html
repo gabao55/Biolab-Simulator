@@ -47,6 +47,11 @@
                 <li><a href="{% url 'density:chhetri_watts' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
 
             {% endwith %}
+            {% with density_models|get_name:"Rackett-Soave Method" as density_model %}
+            
+                <li><a href="{% url 'density:rackett_soave' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
+
+            {% endwith %}
             
         </ul>
     </section>
