@@ -48,6 +48,11 @@
                 <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez_simplified' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
             {% endwith %}
+            {% with cetane_number_models|get_name:"Freedman and Bagdy" as model %}
+            
+                <li><a href="{% url 'cetaneNumber:freedman_bagdy' %}">{{ model }}</a> - {{ model.brief_description }}</li>
+
+            {% endwith %}
             
         </ul>
 

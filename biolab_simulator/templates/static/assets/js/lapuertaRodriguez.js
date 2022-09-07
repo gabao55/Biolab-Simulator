@@ -10,13 +10,13 @@ function addCompound() {
     const doubleBonds = addedCompound.querySelector("input[id=double-bounds-number]").value;
 
     if (checkInputs(carbonsNumber, doubleBonds) === false) {
-        alert("Please fill all fields to proceed.");
+        alert("Por favor preencha todos os campos para prosseguir.");
         return
     } else if (checkInputs(carbonsNumber, doubleBonds) === "wrong fields") {
-        alert ("Number of double bonds should be smaller then the number of carbons minus 1.");
+        alert ("O número de ligações duplas deve ser menor que o número de carbonos menos 1.");
         return
     } else if (checkInputs(carbonsNumber, doubleBonds) === "negative input") {
-        alert("Please provide positive numbers");
+        alert("Por favor, forneça números positivos");
         return
     }
 
@@ -31,7 +31,7 @@ function addCompound() {
     isCompoundAdded = checkRepetitiveCompound(compoundDetails);
 
     if (isCompoundAdded) {
-        alert("Compound already added.");
+        alert("Composto já inserido.");
         isCompoundAdded = false;
         return
     }
@@ -109,13 +109,13 @@ function addCompoundSimplified() {
     const doubleBonds = addedCompound.querySelector("input[id=double-bounds-number]").value;
 
     if (checkInputs(carbonsNumber, doubleBonds) === false) {
-        alert("Please fill all fields to proceed.");
+        alert("Por favor preencha todos os campos para prosseguir.");
         return
     } else if (checkInputs(carbonsNumber, doubleBonds) === "wrong fields") {
-        alert ("Number of double bonds should be smaller then the number of carbons minus 1.");
+        alert ("O número de ligações duplas deve ser menor que o número de carbonos menos 1.");
         return
     } else if (checkInputs(carbonsNumber, doubleBonds) === "negative input") {
-        alert("Please provide positive numbers");
+        alert("Por favor, forneça números positivos");
         return
     }
 
@@ -127,7 +127,7 @@ function addCompoundSimplified() {
     isCompoundAdded = checkRepetitiveCompound(compoundDetails);
 
     if (isCompoundAdded) {
-        alert("Compound already added.");
+        alert("Composto já inserido.");
         isCompoundAdded = false;
         return
     }
@@ -144,6 +144,49 @@ function addCompoundSimplified() {
             Número de duplas ligações
         </label>
         <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0 max=${carbonsNumber - 1}>
+        <label for="${"Volume % " + String(compoundIndex)}">
+            % em volume
+        </label>
+        <input name="${"Volume % " + String(compoundIndex)}" type='number' placeholder='0' min=0 max=100 value=0>
+        <br>
+    `;
+
+    compoundIndex ++;
+}function addCompoundFreedman() {
+    const addedCompound = document.querySelector(".add-compound");
+    const molarMass = addedCompound.querySelector("input[id=molar-mass]").value;
+    const doubleBonds = addedCompound.querySelector("input[id=double-bounds-number]").value;
+
+    if (!molarMass || !doubleBonds) {
+        alert("Por favor preencha todos os campos para prosseguir.");
+        return
+    }
+
+    let compoundDetails = {
+        molarMass,
+        db: doubleBonds
+    };
+
+    isCompoundAdded = checkRepetitiveCompound(compoundDetails);
+
+    if (isCompoundAdded) {
+        alert("Composto já inserido.");
+        isCompoundAdded = false;
+        return
+    }
+
+    allCompounds.push(compoundDetails);
+
+    const form = document.querySelector(".added-compounds");
+    form.innerHTML += `
+        <label for="${"Molar mass " + String(compoundIndex)}">
+            Massa molar
+        </label>
+        <input name="${"Molar mass " + String(compoundIndex)}" type='number' value=${molarMass} min="1">
+        <label for="${"Double bonds " + String(compoundIndex)}">
+            Número de duplas ligações
+        </label>
+        <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0>
         <label for="${"Volume % " + String(compoundIndex)}">
             % em volume
         </label>
