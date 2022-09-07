@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load home_filters %}
 
 {% block title %}Plugging Point{% endblock title %}
 
@@ -37,11 +38,17 @@
         <h2>Modelos disponíveis</h2>
         <ul>
 
-            {% for model in predictive_models %}
+
+            {% with predictive_models|get_name:"Su and Liu Correlation" as predictive_model %}
             
-                <li><a href="{% url 'pluggingPoint:su_liu' %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
-                
-            {% endfor %}
+                <li><a href="{% url 'pluggingPoint:su_liu' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
+
+            {% endwith %}
+            {% with predictive_models|get_name:"Sarin et al." as predictive_model %}
+            
+                <li><a href="{% url 'pluggingPoint:sarin' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
+
+            {% endwith %}
             
         </ul>
     </section>

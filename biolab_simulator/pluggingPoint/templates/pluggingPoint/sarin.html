@@ -1,0 +1,49 @@
+{% extends 'pluggingPoint/model.html' %}
+{% load static %}
+
+{% block prediction_form %}
+
+    <h2>Calcular propriedade</h2>
+
+    {% if result %}
+
+        <h1>CFPP calculado</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="container-fluid p-0">
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }} °C</h2>
+
+    {% endif %}
+
+    <div class="form-center">
+        <form action="." method="POST">
+
+            {% csrf_token %}
+            
+            <h2>Parâmetros de entrada</h2>
+
+            <div class="form-center added-compounds">
+                <label for="PFAME %">
+                    Teor de FAME palmítico
+                </label>
+                <input name="PFAME %" type='number' placeholder="0" min="0" max="100" step="0.01" required>
+                <br>
+            </div>
+
+            <input type="submit" value="Calcular CFPP" />
+        </form>
+    </div>
+    <script src="{% static 'assets/js/murnaghan.js' %}"></script>
+
+{% endblock prediction_form %}

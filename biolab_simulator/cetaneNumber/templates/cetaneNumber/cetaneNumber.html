@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load home_filters %}
 
 {% block title %}Cetane Number{% endblock title %}
 
@@ -41,11 +42,21 @@
         <h2>Modelos disponíveis</h2>
         <ul>
 
-            {% for model in predictive_models %}
+            {% with predictive_models|get_name:"La Puerta, Rodríguez and Mora" as predictive_model %}
             
-                <li><a href="{% url 'cetaneNumber:cetaneNumber_model' name=model.name %}">{{ model.name }}</a> - {{ model.brief_description }}</li>
-                
-            {% endfor %}
+                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
+
+            {% endwith %}
+            {% with predictive_models|get_name:"La Puerta, Rodríguez and Mora (somente FAME)" as predictive_model %}
+            
+                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez_simplified' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
+
+            {% endwith %}
+            {% with predictive_models|get_name:"Freedman and Bagdy" as predictive_model %}
+            
+                <li><a href="{% url 'cetaneNumber:freedman_bagdy' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
+
+            {% endwith %}
             
         </ul>
     </section>

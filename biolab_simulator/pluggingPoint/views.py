@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView, View
 
-from .utils import su_liu_predict
+from .utils import sarin_predict, su_liu_predict
 from . import models
 
 def pluggingPoint(request):
@@ -51,6 +51,26 @@ class SuLiu(DetailView):
             form = request.POST.dict()
 
             self.context['result'] = su_liu_predict(form)
+
+            if not form:
+                return render(request, self.template_name, self.context)
+
+            return render(request, self.template_name, self.context)
+
+class Sarin(SuLiu):
+    template_name = "pluggingPoint/sarin.html"
+    model = get_object_or_404(models.PredictiveModel,
+        name = "Su and Liu Correlation")
+
+    context = {
+        "model": model,
+    }
+    
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = request.POST.dict()
+
+            self.context['result'] = sarin_predict(form)
 
             if not form:
                 return render(request, self.template_name, self.context)

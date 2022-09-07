@@ -62,9 +62,14 @@
             <!-- TODO: Add new links to models -->
             {% with plugging_point_models|get_name:"Su and Liu Correlation" as model %}
             
-                <li><a href="{% url 'pluggingPoint:su_liu' %}">{{ model }}</a> - {{ model.brief_description }}</li>
+            <li><a href="{% url 'pluggingPoint:su_liu' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
-            {% endwith %}
+        {% endwith %}
+        {% with plugging_point_models|get_name:"Sarin et al." as model %}
+        
+            <li><a href="{% url 'pluggingPoint:sarin' %}">{{ model }}</a> - {{ model.brief_description }}</li>
+
+        {% endwith %}
             
         </ul>
     </section>

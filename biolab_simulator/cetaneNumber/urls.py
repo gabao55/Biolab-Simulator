@@ -8,5 +8,4 @@ urlpatterns = [
     path('Lapuerta-Rodriguez-Mora/', views.LapuertaRodriguez.as_view(), name='lapuerta_rodriguez'),
     path('Lapuerta-Rodriguez-Mora-only-FAME/', views.LapuertaRodriguezSimplified.as_view(), name='lapuerta_rodriguez_simplified'),
     path('Freedman-Bagdy/', views.FreedmanBagdy.as_view(), name='freedman_bagdy'),
-    path('<str:name>/', views.PredictiveModel.as_view(), name='cetaneNumber_model'),
 ]
