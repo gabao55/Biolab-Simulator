@@ -1,6 +1,3 @@
-from re import M
-from tkinter import CASCADE
-from unicodedata import name
 from django.db import models
 
 
