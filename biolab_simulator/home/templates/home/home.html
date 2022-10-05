@@ -37,7 +37,6 @@
         <h3><a href="{% url 'cetaneNumber:cetaneNumber' %}">Número de cetano</a></h3>
         <ul>
 
-            <!-- TODO: Add new links to models -->
             {% with cetane_number_models|get_name:"La Puerta, Rodríguez and Mora" as model %}
             
                 <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">{{ model }}</a> - {{ model.brief_description }}</li>
@@ -48,34 +47,12 @@
                 <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez_simplified' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
             {% endwith %}
-            {% with cetane_number_models|get_name:"Freedman and Bagdy" as model %}
-            
-                <li><a href="{% url 'cetaneNumber:freedman_bagdy' %}">{{ model }}</a> - {{ model.brief_description }}</li>
-
-            {% endwith %}
             
         </ul>
 
         <h3><a href="{% url 'pluggingPoint:pluggingPoint' %}">Ponto de entupimento de filtro a frio (CFPP)</a></h3>
         <ul>
-
-            <!-- TODO: Add new links to models -->
-        {% with plugging_point_models|get_name:"Su and Liu Correlation" as model %}
-            
-            <li><a href="{% url 'pluggingPoint:su_liu' %}">{{ model }}</a> - {{ model.brief_description }}</li>
-
-        {% endwith %}
-        {% with plugging_point_models|get_name:"Sarin et al." as model %}
-        
-            <li><a href="{% url 'pluggingPoint:sarin' %}">{{ model }}</a> - {{ model.brief_description }}</li>
-
-        {% endwith %}
-        {% with plugging_point_models|get_name:"Li-Bing et al." as model %}
-        
-            <li><a href="{% url 'pluggingPoint:li_bing' %}">{{ model }}</a> - {{ model.brief_description }}</li>
-
-        {% endwith %}
-            
+            <li><a href="http://google.com" target="_blank">Dados</a> - teste</li>
         </ul>
     </section>
     

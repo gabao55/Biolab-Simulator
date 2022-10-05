@@ -52,11 +52,6 @@
                 <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez_simplified' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
 
             {% endwith %}
-            {% with predictive_models|get_name:"Freedman and Bagdy" as predictive_model %}
-            
-                <li><a href="{% url 'cetaneNumber:freedman_bagdy' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
-
-            {% endwith %}
             
         </ul>
     </section>
