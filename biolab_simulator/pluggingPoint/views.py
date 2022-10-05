@@ -26,46 +26,46 @@ class PredictiveModel(DetailView):
         return self.model
 
 
-class LiBing(PredictiveModel):
-    template_name = 'pluggingPoint/li-bing.html'
-    model = get_object_or_404(models.PredictiveModel,
-        name='Li-Bing et al.')
+# class LiBing(PredictiveModel):
+#     template_name = 'pluggingPoint/li-bing.html'
+#     model = get_object_or_404(models.PredictiveModel,
+#         name='Li-Bing et al.')
 
-    context = {
-        'model': model,
-    }
+#     context = {
+#         'model': model,
+#     }
 
-    def post(self, request, *args, **kwargs):
-        if request.method == 'POST':
-            form = request.POST.dict()
+#     def post(self, request, *args, **kwargs):
+#         if request.method == 'POST':
+#             form = request.POST.dict()
 
-            compounds = {}
-            sum = 0
-            form.pop("compounds")
+#             compounds = {}
+#             sum = 0
+#             form.pop("compounds")
             
-            for compound, value in form.items():
-                if compound != 'csrfmiddlewaretoken' and value and float(value):
-                    compounds[compound] = {'composition': float(value)}
-                    sum += float(value)
+#             for compound, value in form.items():
+#                 if compound != 'csrfmiddlewaretoken' and value and float(value):
+#                     compounds[compound] = {'composition': float(value)}
+#                     sum += float(value)
 
-                    parameters_set = self.model.compound_set.get(esther_type=compound.split(' ')[0], name=compound.split(' ')[1]).parameter_set.all()
+#                     parameters_set = self.model.compound_set.get(esther_type=compound.split(' ')[0], name=compound.split(' ')[1]).parameter_set.all()
 
-                    for parameter in parameters_set:
-                        compounds[compound][parameter.name] = parameter.value
+#                     for parameter in parameters_set:
+#                         compounds[compound][parameter.name] = parameter.value
             
-            if not compounds:
-                messages.error(self.request,
-                "Insira a porcentagem de massa dos compostos para prever a propriedade")
+#             if not compounds:
+#                 messages.error(self.request,
+#                 "Insira a porcentagem de massa dos compostos para prever a propriedade")
 
-                return self.get(request, self.template_name)
+#                 return self.get(request, self.template_name)
 
-            elif sum != 100:
-                messages.warning(self.request,
-                "A soma da porcentagem em massa dos compostos não é igual a 100%, isso pode afetar a propriedade prevista.")
-            else:
-                messages.success(self.request,
-                "Propriedade prevista com sucesso.")
+#             elif sum != 100:
+#                 messages.warning(self.request,
+#                 "A soma da porcentagem em massa dos compostos não é igual a 100%, isso pode afetar a propriedade prevista.")
+#             else:
+#                 messages.success(self.request,
+#                 "Propriedade prevista com sucesso.")
 
-            self.context['result'] = li_bing_predict(compounds)
+#             self.context['result'] = li_bing_predict(compounds)
 
-            return render(request, self.template_name, self.context)
+#             return render(request, self.template_name, self.context)
