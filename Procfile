@@ -1,1 +1,1 @@
-web: gunicorn biolab_simulator.wsgi
+web: gunicorn biolab_simulator.wsgi.py
