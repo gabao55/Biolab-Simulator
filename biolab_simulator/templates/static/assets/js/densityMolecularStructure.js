@@ -3,7 +3,6 @@ const allCompounds = [];
 let isCompoundAdded = false;
 
 function addCompound() {
-    const compounds = document.querySelector(".added-compounds");
     const addedCompound = document.querySelector(".add-compound");
     const estherType = addedCompound.querySelector("select").value;
     const carbonsNumber = addedCompound.querySelector("input[id=carbons-number]").value;
@@ -52,10 +51,10 @@ function addCompound() {
             Número de duplas ligações
         </label>
         <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0 max=${carbonsNumber - 1}>
-        <label for="${"Volume % " + String(compoundIndex)}">
-            % em volume
+        <label for="${"Molar fraction " + String(compoundIndex)}">
+            Fração molar (%)
         </label>
-        <input name="${"Volume % " + String(compoundIndex)}" type='number' placeholder='0' min=0 max=100 value=0>
+        <input name="${"Molar fraction " + String(compoundIndex)}" type='number' placeholder='0' min=0 max=100 value=0>
         <br>
     `;
 
@@ -103,55 +102,4 @@ function getEstherName(input) {
         default:
             return "Butil"
     }
-}
-
-function addCompoundSimplified() {
-    const addedCompound = document.querySelector(".add-compound");
-    const carbonsNumber = addedCompound.querySelector("input[id=carbons-number]").value;
-    const doubleBonds = addedCompound.querySelector("input[id=double-bounds-number]").value;
-
-    if (checkInputs(carbonsNumber, doubleBonds) === false) {
-        alert("Por favor preencha todos os campos para prosseguir.");
-        return
-    } else if (checkInputs(carbonsNumber, doubleBonds) === "wrong fields") {
-        alert ("O número de ligações duplas deve ser menor que o número de carbonos menos 1.");
-        return
-    } else if (checkInputs(carbonsNumber, doubleBonds) === "negative input") {
-        alert("Por favor, forneça números positivos");
-        return
-    }
-
-    let compoundDetails = {
-        carbons: carbonsNumber,
-        db: doubleBonds
-    };
-
-    isCompoundAdded = checkRepetitiveCompound(compoundDetails);
-
-    if (isCompoundAdded) {
-        alert("Composto já inserido.");
-        isCompoundAdded = false;
-        return
-    }
-
-    allCompounds.push(compoundDetails);
-
-    const form = document.querySelector(".added-compounds");
-    form.innerHTML += `
-        <label for="${"Carbons number " + String(compoundIndex)}">
-            Número de carbonos
-        </label>
-        <input name="${"Carbons number " + String(compoundIndex)}" type='number' value=${carbonsNumber} min="1">
-        <label for="${"Double bonds " + String(compoundIndex)}">
-            Número de duplas ligações
-        </label>
-        <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0 max=${carbonsNumber - 1}>
-        <label for="${"Volume % " + String(compoundIndex)}">
-            % em volume
-        </label>
-        <input name="${"Volume % " + String(compoundIndex)}" type='number' placeholder='0' min=0 max=100 value=0>
-        <br>
-    `;
-
-    compoundIndex ++;
 }

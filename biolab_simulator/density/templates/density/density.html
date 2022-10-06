@@ -51,6 +51,11 @@
                 <li><a href="{% url 'density:rackett_soave' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
 
             {% endwith %}
+            {% with density_models|get_name:"Estrutura molecular" as density_model %}
+            
+                <li><a href="{% url 'density:molecular_structure' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
+
+            {% endwith %}
             
         </ul>
     </section>

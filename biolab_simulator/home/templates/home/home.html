@@ -30,6 +30,11 @@
                 <li><a href="{% url 'density:rackett_soave' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
             {% endwith %}
+            {% with density_models|get_name:"Estrutura molecular" as model %}
+            
+                <li><a href="{% url 'density:molecular_structure' %}">{{ model }}</a> - {{ model.brief_description }}</li>
+
+            {% endwith %}
                 
             
         </ul>

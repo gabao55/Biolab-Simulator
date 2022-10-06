@@ -1,10 +1,8 @@
-from http.client import HTTPResponse
 from django.contrib import messages
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView, View
 from . import models
-from .utils import chhetri_watts_predict, murnaghan_equation_predict, rackett_soave_predict
+from .utils import chhetri_watts_predict, molecular_structure_predict, murnaghan_equation_predict, rackett_soave_predict
 
 
 class Density(View):
@@ -168,5 +166,37 @@ class RackettSoave(MurnaghanEquation):
                 "Propriedade prevista com sucesso.")
 
             self.context['result'] = rackett_soave_predict(intensive_parameters, compounds)
+
+            return render(request, self.template_name, self.context)
+
+
+class MolecularStructure(DetailView):
+    template_name = "density/molecular_structure.html"
+    model = get_object_or_404(models.PredictiveModel,
+        name = "Estrutura molecular")
+
+    context = {
+        "model": model,
+    }
+
+    def get(self, request, *args, **kwargs):
+
+        self.context['result'] = None
+
+        return render(request, self.template_name, self.context)
+    
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            form = request.POST.dict()
+            form.pop("csrfmiddlewaretoken")
+
+            if not form:
+                return render(request, self.template_name, self.context)
+
+            self.context['result'], molar_fractions_sum = molecular_structure_predict(form)
+
+            if sum(molar_fractions_sum) != 1:
+                messages.warning(self.request,
+                "A soma das frações molares dos compostos não é igual a 100%, isso pode afetar a propriedade prevista.")
 
             return render(request, self.template_name, self.context)
