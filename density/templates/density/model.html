@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load density_filters %}
+
+{% block title %}Density | {{ model.name }}{% endblock title %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="responsive-space"></div>
+        <h1>{{ model.name }}</h1>
+
+        <h2>Sobre</h2>
+        
+        {{ model.description|safe }}
+
+        {% block prediction_form %}{% endblock prediction_form %}
+        
+    </section>
+
+{% endblock content %}

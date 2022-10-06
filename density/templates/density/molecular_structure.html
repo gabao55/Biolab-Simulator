@@ -1,0 +1,61 @@
+{% extends 'cetaneNumber/model.html' %}
+{% load static %}
+
+{% block prediction_form %}
+
+    <h2>Cálculo da propriedade</h2>
+
+    {% if result %}
+
+        <h1>Número de cetano calculado</h1>
+
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="container-fluid p-0">
+                        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+        <h2 style="color: black; font-weight: normal; text-align: center;">{{ result }}</h2>
+
+    {% endif %}
+
+    <div class="form-center">
+        <form action="." method="POST">
+            {% csrf_token %}
+            <div class="add-compound add-esther">
+                <label for="Add compound to mixture">Adicionar composto à mistura:</label>
+                <div>
+                    <label for="Esther type">Tipo de ester</label>
+                    <select id="Esther type">
+                        <option value="1">Metil</option>
+                        <option value="2">Etil</option>
+                        <option value="3">Propil</option>
+                        <option value="4">Butil</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="Carbons number">Número de carbonos</label>
+                    <input id="carbons-number" type="number" />
+                </div>
+                <div>
+                    <label for="Double bounds">Numero de ligações duplas</label>
+                    <input id="double-bounds-number" type="number" />                    
+                </div>
+                <div onclick="addCompound();" class="add-button">Adicionar</div>
+            </div>
+
+            <div class="form-center added-compounds"></div>
+
+            <input type="submit" value="Calcular massa específica" />
+        </form>
+    </div>
+    <script src="{% static 'assets/js/densityMolecularStructure.js' %}"></script>
+
+{% endblock prediction_form %}

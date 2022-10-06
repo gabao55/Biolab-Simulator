@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block title %}Plugging Point{% endblock title %}
+
+{% block content %}
+
+    <section class="content">
+        <div class="responsive-space"></div>
+        <h1>Ponto de entupimento de filtro a frio</h1>
+        <h2>Sobre</h2>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; O ponto de entupimento corresponde à temperatura de uma fração de óleo na qual ocorre a formação de cristais, em
+            quantidade tal que ocorre uma queda de pressão em um filtro padronizado, fazendo com que o produto pare de fluir
+            (<a href="https://www.grupogen.com.br/e-book-petroleo-e-seus-derivados" target="_blank" rel="noopener noreferrer">FARAH, 2015</a>). Embora na definição utilizada o ponto de entupimento seja especificado para frações de óleo, o conceito
+            também se aplica ao biodiesel e é referido como Cold Filter Plugging Point (CFPP).</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; O ponto de entupimento, assim como as demais propriedades, é fortemente influenciado pelo comprimento da cadeia do
+            éster. Enquanto, ao contrário dos anteriores, há autores que afirmam que a presença de insaturação não apresenta
+            influência sobre esta propriedade, argumentando que o CFPP dos biodieseis está relacionado ao fator comprimento da cadeia saturada (LCSF).</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; Muitos estudos foram realizados para determinar como a estrutura das moléculas componentes do combustível afeta
+            seu número de cetano e sabe-se que quanto maior a cadeia carbônica (maior o número de carbonos na molécula),
+            quanto maior o seu número de cetano. Além disso, verificou-se que a presença de insaturação na cadeia torna a
+            número de cetano do composto a ser reduzido.</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; Com base na ideia desse fator, um tipo de modelo que foi desenvolvido para prever essa propriedade leva em consideração
+            considerando a composição da mistura (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0960852408005464" target="_blank" rel="noopener noreferrer">RAMOS et al., 2009</a>), assumindo que compostos insaturados
+            comportam-se como solventes para compostos saturados, uma vez que a temperatura de fusão de compostos insaturados é
+            consideravelmente menor do que os saturados. Com isso dito, os cristais formados responsáveis ​​pela queda de pressão
+            citados são dos ésteres saturados.</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; No entanto, existem modelos que também consideram a influência de compostos insaturados na determinação deste
+            propriedade da composição da mistura (<a href="https://pubs.acs.org/doi/full/10.1021/ie102441u?casa_token=hewiWF-Khw0AAAAA%3AOugipp5cEaBzmFDjF3h7ihZ4GE73rZ8TKHh0crVOqRBOmxuKBPN0U4b0G3GC1xTgymaewi5XKSIpaw" target="_blank" rel="noopener noreferrer">SU et al., 2011</a>), afirmando que a presença desses compostos,
+            mesmo que tenham pontos de entupimento menores que os saturados, contribuem para a redução do CFPP da mistura.
+            Defendendo que as ligações duplas causam uma redução das forças atrativas entre as moléculas, gerando uma redução no CFPP.</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; Devido aos problemas gerados por altos valores de CFPP, é extremamente importante ter em mente o
+            condições climáticas da região para a qual o combustível se destina a ser comercializado em cada período do ano, com destaque para
+            para regiões onde o clima atinge temperaturas mais baixas, como a região sul do Brasil para evitar problemas de fase
+            mudança no biodiesel. Os valores do CFFP no Brasil estão especificados no site da ANP para cada estado e os respectivos
+            mês do ano, levando em consideração o clima para essa época do ano.</p>
+        <h2>Dados disponíveis</h2>
+        <ul>
+            <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S1364032116301459" target="_blank" rel="noopener noreferrer">Dados</a>
+            - Para esta propriedade, não foi encontrado nenhum modelo com bom desempenho em testes, por isso sugere-se consultar dados experimentais</li>
+        </ul>
+    </section>
+
+{% endblock content %}
