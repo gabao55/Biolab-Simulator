@@ -11,14 +11,14 @@
         <h1>Número de cetano</h1>
         <h2>Sobre</h2>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; O número de cetano de um combustível representa a qualidade da combustão medida pela sua facilidade de auto-ignição.
-            em máquinas que operam de acordo com o ciclo do diesel (FARAH, 2015). Geralmente é determinado comparando-se
+            em máquinas que operam de acordo com o ciclo do diesel (<a href="https://www.grupogen.com.br/e-book-petroleo-e-seus-derivados" target="_blank" rel="noopener noreferrer">FARAH, 2015</a>). Geralmente é determinado comparando-se
             entre as características de combustão do combustível em questão com combustíveis de referência cujos índices de cetano
             são conhecidos em condições normais de operação. Tais referências são 4,4,6,8-heptametilnonano (HMN) e hexadecano,
             cujos números de cetano correspondem a 15 e 100, respectivamente, representando assim componentes de referência ruins e de boa qualidade.</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; Portanto, um maior índice de cetano traz benefícios para o funcionamento do motor, entre eles: menor formação de
             depósitos de carbono na câmara de combustão, através de combustão mais completa, aquecimento mais rápido após
             partida em baixas temperaturas, temperaturas de partida da máquina mais baixas e menos estresse nos componentes
-            metais cilíndricos (FARAH, 2015).</p>
+            metais cilíndricos (<a href="https://www.grupogen.com.br/e-book-petroleo-e-seus-derivados" target="_blank" rel="noopener noreferrer">FARAH, 2015</a>).</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; Muitos estudos foram realizados para determinar como a estrutura das moléculas componentes do combustível afeta
             seu número de cetano e sabe-se que quanto maior a cadeia carbônica (maior o número de carbonos na molécula),
             quanto maior o seu número de cetano. Além disso, verificou-se que a presença de insaturação na cadeia torna a
@@ -28,28 +28,27 @@
             valor do número de cetano. Com a previsão desta propriedade para cada componente da mistura, pode-se aplicar uma regra de mistura volumétrica
             determinar a propriedade final da mistura. Existem também modelos que, ao invés de considerar o número de carbonos,
             levar em conta a massa molecular do composto para esta previsão, juntamente com o número de insaturações.
-            (RAMÍREZ-VERDUZCO, RODRÍGUEZ-RODRÍGUEZ e JARAMILLO-JACOB, 2012).</p>
+            (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0016236111003942" target="_blank" rel="noopener noreferrer">RAMÍREZ-VERDUZCO; RODRÍGUEZ-RODRÍGUEZ; JARAMILLO-JACOB, 2012</a>).</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; Também foi mostrado na literatura modelos que afirmam uma forte relação entre o número de cetano e outros
             físico-químicas do biodiesel, então foram propostos modelos de previsão baseados em: ponto de ebulição,
-            viscosidade, calor de combustão e densidade (FREEDMAN e BAGBY, 1990). Outro jornal com o mesmo objetivo
-            apresentou um modelo que baseou a previsão a partir do número de saponificação juntamente com o índice de iodo (AZAM,
-            WARIS e NAHAR, 2005).</p>
+            viscosidade, calor de combustão e densidade (<a href="https://aocs.onlinelibrary.wiley.com/doi/abs/10.1007/BF02540768" target="_blank" rel="noopener noreferrer">FREEDMAN; BAGBY, 1990</a>). Outro jornal com o mesmo objetivo
+            apresentou um modelo que baseou a previsão a partir do número de saponificação juntamente com o índice de iodo (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0961953405000747" target="_blank" rel="noopener noreferrer">AZAM;
+            WARIS; NAHAR, 2005</a>).</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; Por fim, outra forma proposta na literatura para abordar a previsão do índice de cetano de um biodiesel é
             determinar a propriedade diretamente pela composição do biodiesel, ou seja, a porcentagem em massa de cada tipo de éster
             presentes na mistura (por exemplo: palmítico, oleico, linoleico, etc.), a partir da análise de amostras experimentais com
-            o uso de redes neurais artificiais (RNA) e regressões lineares múltiplas (PILOTO-RODRÍGUEZ, SÁNCHEZ-BORROTO,
-            et al., 2013).</p>
+            o uso de redes neurais artificiais (RNA) e regressões lineares múltiplas (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0196890412003093" target="_blank" rel="noopener noreferrer">PILOTO-RODRÍGUEZ et al., 2013</a>).</p>
         <h2>Modelos disponíveis</h2>
         <ul>
 
-            {% with predictive_models|get_name:"La Puerta, Rodríguez and Mora" as predictive_model %}
-            
-                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
-
-            {% endwith %}
-            {% with predictive_models|get_name:"La Puerta, Rodríguez and Mora (somente FAME)" as predictive_model %}
+            {% with predictive_models|get_name:"Estrutura molecular (somente FAME)" as predictive_model %}
             
                 <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez_simplified' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
+
+            {% endwith %}
+            {% with predictive_models|get_name:"Estrutura molecular (FAME, FAEE, FAPE e FABE)" as predictive_model %}
+            
+                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">{{ predictive_model }}</a> - {{ predictive_model.brief_description }}</li>
 
             {% endwith %}
             

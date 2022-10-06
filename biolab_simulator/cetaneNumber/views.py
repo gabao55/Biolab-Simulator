@@ -29,7 +29,7 @@ class PredictiveModel(DetailView):
 class LapuertaRodriguez(DetailView):
     template_name = "cetaneNumber/lapuerta_rodriguez.html"
     model = get_object_or_404(models.PredictiveModel,
-        name = "La Puerta, Rodríguez and Mora")
+        name = "Estrutura molecular (FAME, FAEE, FAPE e FABE)")
 
     context = {
         "model": model,
@@ -60,7 +60,7 @@ class LapuertaRodriguez(DetailView):
 class LapuertaRodriguezSimplified(LapuertaRodriguez):
     template_name = "cetaneNumber/lapuerta_rodriguez_simplified.html"
     model = get_object_or_404(models.PredictiveModel,
-        name = "La Puerta, Rodríguez and Mora (somente FAME)")
+        name = "Estrutura molecular (somente FAME)")
 
     context = {
         "model": model,

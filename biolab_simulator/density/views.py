@@ -20,7 +20,7 @@ class Density(View):
 class MurnaghanEquation(DetailView):
     template_name = 'density/murnaghan_equation.html'
     model = get_object_or_404(models.PredictiveModel,
-        name='Murnaghan Equation')
+        name='Equação de Murnaghan')
 
     intensive_parameters = ['Temperatura (K)', "Pressão (MPa)", "Massa específica atmosférica (kg/m³)"]
     context = {
@@ -113,7 +113,7 @@ class ChhetriWatts(DetailView):
 class RackettSoave(MurnaghanEquation):
     template_name = 'density/murnaghan_equation.html'
     model = get_object_or_404(models.PredictiveModel,
-        name='Rackett-Soave Method')
+        name='Método Rackett-Soave')
 
     intensive_parameters = ['Temperatura (K)', "Temperatura de Referência (K)", "Massa específica de referência (kg/m³)"]
     context = {

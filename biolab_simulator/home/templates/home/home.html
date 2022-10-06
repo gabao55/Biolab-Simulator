@@ -15,7 +15,7 @@
         <h3><a href="{% url 'density:density' %}">Massa específica</a></h3>
         <ul>
 
-            {% with density_models|get_name:"Murnaghan Equation" as model %}
+            {% with density_models|get_name:"Equação de Murnaghan" as model %}
             
                 <li><a href="{% url 'density:murnaghan_equation' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
@@ -25,7 +25,7 @@
                 <li><a href="{% url 'density:chhetri_watts' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
             {% endwith %}
-            {% with density_models|get_name:"Rackett-Soave Method" as model %}
+            {% with density_models|get_name:"Método Rackett-Soave" as model %}
             
                 <li><a href="{% url 'density:rackett_soave' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
@@ -37,14 +37,14 @@
         <h3><a href="{% url 'cetaneNumber:cetaneNumber' %}">Número de cetano</a></h3>
         <ul>
 
-            {% with cetane_number_models|get_name:"La Puerta, Rodríguez and Mora" as model %}
-            
-                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">{{ model }}</a> - {{ model.brief_description }}</li>
-
-            {% endwith %}
-            {% with cetane_number_models|get_name:"La Puerta, Rodríguez and Mora (somente FAME)" as model %}
+            {% with cetane_number_models|get_name:"Estrutura molecular (somente FAME)" as model %}
             
                 <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez_simplified' %}">{{ model }}</a> - {{ model.brief_description }}</li>
+
+            {% endwith %}
+            {% with cetane_number_models|get_name:"Estrutura molecular (FAME, FAEE, FAPE e FABE)" as model %}
+            
+                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">{{ model }}</a> - {{ model.brief_description }}</li>
 
             {% endwith %}
             
@@ -52,7 +52,8 @@
 
         <h3><a href="{% url 'pluggingPoint:pluggingPoint' %}">Ponto de entupimento de filtro a frio (CFPP)</a></h3>
         <ul>
-            <li><a href="http://google.com" target="_blank">Dados</a> - teste</li>
+            <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S1364032116301459" target="_blank" rel="noopener noreferrer">Dados</a>
+            - Para esta propriedade, não foi encontrado nenhum modelo com bom desempenho em testes, por isso sugere-se consultar dados experimentais</li>
         </ul>
     </section>
     
