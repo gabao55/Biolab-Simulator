@@ -1,10 +1,35 @@
 {% load static %}
 
-<input id="close-menu" class="close-menu" type="checkbox"  aria-label="Close menu" role="button">
-<label class="close-menu-label invisible-item" for="close-menu" title="close menu">≡</label>
-<nav>
+<nav class="computer-menu">
     <div class="logo"><a href="{% url 'home:home' %}" onclick="getElementById('close-menu')">BLSIM</a></div>
     <ul>
+        <li class="option"><a href="{% url 'home:home' %}">Home</a></li>
+        <li class="option">
+            <a href="{% url 'density:density' %}">Massa específica <i class="arrow down"></i></a>
+            <ul>
+                <li><a href="{% url 'density:murnaghan_equation' %}">Murnaghan</a></li>
+                <li><a href="{% url 'density:chhetri_watts' %}">Regressão</a></li>
+                <li><a href="{% url 'density:rackett_soave' %}">Rackett-Soave</a></li>
+                <li><a href="{% url 'density:molecular_structure' %}">Estrutura molecular</a></li>
+            </ul>
+        </li>
+        <li class="option">
+            <a href="{% url 'cetaneNumber:cetaneNumber' %}">Número de cetano <i class="arrow down"></i></a>
+            <ul>
+                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez_simplified' %}">FAMEs</a></li>
+                <li><a href="{% url 'cetaneNumber:lapuerta_rodriguez' %}">FAMEs e outros</a></li>
+            </ul>
+        </li>
+        <li class="option"><a href="{% url 'pluggingPoint:pluggingPoint' %}">CFPP</a></li>
+        <li class="option"><a href="{% url 'home:contact' %}">Contact</a></li>
+    </ul>
+</nav>
+
+<input id="close-menu" class="close-menu" type="checkbox"  aria-label="Close menu" role="button">
+<label class="mobile close-menu-label" for="close-menu" title="close menu">≡</label>
+<nav class="mobile">
+    <div class="logo"><a href="{% url 'home:home' %}" onclick="getElementById('close-menu')">BLSIM</a></div>
+    <ul class="mobile-menu invisible-item">
         <li class="option"><a href="{% url 'home:home' %}">Home</a></li>
         <li class="option">
             <a href="{% url 'density:density' %}">Massa específica <i class="arrow down"></i></a>

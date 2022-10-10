@@ -134,6 +134,7 @@ nav .mobile-menu {
     float: none;
     width: 100%;
     left: 0;
+    display: none;
     overflow: auto;
 }
 
@@ -175,10 +176,6 @@ ul .mobile-menu-item ul li a {
 
     .computer-menu {
         display: none;
-    }
-
-    .mobile-menu {
-        display: block;
     }
 
     .mobile {

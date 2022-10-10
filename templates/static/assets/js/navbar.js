@@ -1,7 +1,7 @@
-let dropdown = document.querySelectorAll("nav ul li");
+let dropdown = document.querySelectorAll(".computer-menu ul li");
 let mobileMenuIcon = document.querySelector('.close-menu-label');
-let mobileMenu = document.querySelector("nav ul");
-let mobileMenuItem = document.querySelectorAll("nav ul li.option");
+let mobileMenu = document.querySelector(".mobile ul");
+let mobileMenuItem = document.querySelectorAll(".mobile ul li.option");
 
 function dropdownAnimationEntering() {
     let options;
@@ -51,25 +51,18 @@ function dropdownAnimationClick() {
     });
 };
 
-if(window.matchMedia("(min-width: 800px)").matches) {
-    dropdownAnimationEntering();
-    dropdownAnimationLeaving();
-}
+dropdownAnimationEntering();
+dropdownAnimationLeaving();
 
-// Responsive navbar:
-if (window.matchMedia("(max-width: 820px)").matches) {
-    mobileMenuIcon.classList.toggle("invisible-item");
-    mobileMenu.classList.add("mobile-menu", "invisible-item");
-    let dropdownOption;
-    mobileMenuItem.forEach((item) => {
-        item.classList.add("mobile-menu-item");
-        dropdownOption = item.querySelector("ul");
-        if (dropdownOption) {
-            dropdownOption.classList.toggle("invisible-item")
-        }
-    });
-    dropdownAnimationClick();
-}
+let dropdownOption;
+mobileMenuItem.forEach((item) => {
+    item.classList.add("mobile-menu-item");
+    dropdownOption = item.querySelector("ul");
+    if (dropdownOption) {
+        dropdownOption.classList.toggle("invisible-item")
+    }
+});
+dropdownAnimationClick();
 
 mobileMenuIcon.addEventListener("click", () => {
     if (mobileMenuIcon.textContent === "≡") {
