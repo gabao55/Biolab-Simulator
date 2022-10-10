@@ -27,4 +27,4 @@ urlpatterns = [
     path('density/', include('density.urls')),
     path('cetane-number/', include('cetaneNumber.urls')),
     path('plugging-point/', include('pluggingPoint.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
