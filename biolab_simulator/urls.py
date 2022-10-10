@@ -13,7 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import imp
 from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path, include
@@ -27,4 +26,5 @@ urlpatterns = [
     path('density/', include('density.urls')),
     path('cetane-number/', include('cetaneNumber.urls')),
     path('plugging-point/', include('pluggingPoint.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
