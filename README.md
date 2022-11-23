@@ -1,4 +1,4 @@
-# Biolab-Simulator (BLSIM)
+<h1 align="center">Biolab-Simulator (BLSIM)</h1>
 Esse projeto consiste no Trabalho de Conclusão de Curso (TCC) do aluno Gabriel Salateo Rosin - RA 172436 para o curso de Engenharia Química da UNICAMP.
 
 ## O projeto
