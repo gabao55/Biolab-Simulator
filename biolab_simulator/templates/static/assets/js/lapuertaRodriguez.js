@@ -20,7 +20,7 @@ function addCompound() {
         return
     }
 
-    const estherName = getEstherName(estherType);
+    const estherName = getEstherName(parseInt(estherType));
 
     let compoundDetails = {
         esther: estherName,
@@ -94,12 +94,14 @@ function checkElements(compoundX, compoundY) {
 
 function getEstherName(input) {
     switch (input) {
+        case 1:
+            return "Metil"
         case 2:
-            return "Ethyl"
+            return "Etil"
         case 3:
-            return "Propyl"
+            return "Propil"
         default:
-            return "Butyl"
+            return "Butil"
     }
 }
 
@@ -144,49 +146,6 @@ function addCompoundSimplified() {
             Número de duplas ligações
         </label>
         <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0 max=${carbonsNumber - 1}>
-        <label for="${"Volume % " + String(compoundIndex)}">
-            % em volume
-        </label>
-        <input name="${"Volume % " + String(compoundIndex)}" type='number' placeholder='0' min=0 max=100 value=0>
-        <br>
-    `;
-
-    compoundIndex ++;
-}function addCompoundFreedman() {
-    const addedCompound = document.querySelector(".add-compound");
-    const molarMass = addedCompound.querySelector("input[id=molar-mass]").value;
-    const doubleBonds = addedCompound.querySelector("input[id=double-bounds-number]").value;
-
-    if (!molarMass || !doubleBonds) {
-        alert("Por favor preencha todos os campos para prosseguir.");
-        return
-    }
-
-    let compoundDetails = {
-        molarMass,
-        db: doubleBonds
-    };
-
-    isCompoundAdded = checkRepetitiveCompound(compoundDetails);
-
-    if (isCompoundAdded) {
-        alert("Composto já inserido.");
-        isCompoundAdded = false;
-        return
-    }
-
-    allCompounds.push(compoundDetails);
-
-    const form = document.querySelector(".added-compounds");
-    form.innerHTML += `
-        <label for="${"Molar mass " + String(compoundIndex)}">
-            Massa molar
-        </label>
-        <input name="${"Molar mass " + String(compoundIndex)}" type='number' value=${molarMass} min="1">
-        <label for="${"Double bonds " + String(compoundIndex)}">
-            Número de duplas ligações
-        </label>
-        <input name="${"Double bonds " + String(compoundIndex)}" type='number' value=${doubleBonds} min=0>
         <label for="${"Volume % " + String(compoundIndex)}">
             % em volume
         </label>

@@ -13,31 +13,6 @@
         
         {{ model.description|safe }}
 
-        <h2>Equações</h2>
-        
-        {% with model.equation_set.all as equations %}
-        
-            {% for equation in equations %}
-            
-                <img src="{{ equation.equation.url }}" alt="Equation number {{ equation.id }}">
-
-            {% endfor %}
-        
-        {% endwith %}
-
-        <h2>Gráficos</h2>
-        
-        {% with model.graph_set.all as graphs %}
-        
-            {% for graph in graphs %}
-            
-                <img src="{{ graph.image.url }}" alt="{{ graph.label }}">
-                <figcaption>{{ graph.label }}</figcaption>
-
-            {% endfor %}
-        
-        {% endwith %}
-
         {% block prediction_form %}{% endblock prediction_form %}
 
     </section>

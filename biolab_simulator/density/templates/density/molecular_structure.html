@@ -7,7 +7,7 @@
 
     {% if result %}
 
-        <h1>Número de cetano calculado</h1>
+        <h1>Massa específica calculada</h1>
 
             {% if messages %}
             <ul class="messages">
@@ -32,21 +32,30 @@
             <div class="add-compound add-esther">
                 <label for="Add compound to mixture">Adicionar composto à mistura:</label>
                 <div>
-                    <label for="Molar mass">Massa molar</label>
-                    <input id="molar-mass" type="number" min="0" />
+                    <label for="Esther type">Tipo de ester</label>
+                    <select id="Esther type">
+                        <option value="1">Metil</option>
+                        <option value="2">Etil</option>
+                        <option value="3">Propil</option>
+                        <option value="4">Butil</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="Carbons number">Número de carbonos</label>
+                    <input id="carbons-number" type="number" />
                 </div>
                 <div>
                     <label for="Double bounds">Numero de ligações duplas</label>
-                    <input id="double-bounds-number" type="number" min="0" />                    
+                    <input id="double-bounds-number" type="number" />                    
                 </div>
-                <div onclick="addCompoundFreedman();" class="add-button">Adicionar</div>
+                <div onclick="addCompound();" class="add-button">Adicionar</div>
             </div>
 
             <div class="form-center added-compounds"></div>
 
-            <input type="submit" value="Calcular número de cetano" />
+            <input type="submit" value="Calcular massa específica" />
         </form>
     </div>
-    <script src="{% static 'assets/js/lapuertaRodriguez.js' %}"></script>
+    <script src="{% static 'assets/js/densityMolecularStructure.js' %}"></script>
 
 {% endblock prediction_form %}

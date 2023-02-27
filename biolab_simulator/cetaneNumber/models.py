@@ -1,4 +1,3 @@
-from tkinter import CASCADE
 from django.db import models
 
 class PredictiveModel(models.Model):
@@ -9,30 +8,6 @@ class PredictiveModel(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
-
-class Equation(models.Model):
-    model_id = models.ForeignKey(PredictiveModel, on_delete=models.CASCADE)
-    number = models.IntegerField(verbose_name="Equation's number", blank=True)
-    equation = models.ImageField(verbose_name="Equation's image")
-
-    def __str__(self) -> str:
-        return str(self.model_id.name) + "'s " + "equation " + str(self.number)
-
-    def getModel(self) -> str:
-        return self.model_id.name
-
-
-class Graph(models.Model):
-    model_id = models.ForeignKey(PredictiveModel, on_delete=models.CASCADE)
-    label = models.CharField(max_length=100 ,verbose_name="Graph's label", blank=True)
-    image = models.ImageField(verbose_name="Graph's image")
-
-    def __str__(self) -> str:
-        return self.label
-
-    def getModel(self) -> str:
-        return self.model_id.name
 
 
 class Compound(models.Model):

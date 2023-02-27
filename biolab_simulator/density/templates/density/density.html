@@ -14,29 +14,29 @@
             haverá bom funcionamento de um motor. A potência produzida pelo motor é diretamente proporcional à massa de combustível queimada.
             Como a bomba injetora alimenta o motor com volumes constantes de óleo diesel, a densidade influencia a massa injetada que,
             por sua vez, define a potência produzida e o consumo volumétrico específico de óleo diesel. Então a densidade deve ser
-            controlado em uma faixa para evitar variações de potência para o mesmo volume injetado na câmara (FARAH, 2015).</p>
+            controlado em uma faixa para evitar variações de potência para o mesmo volume injetado na câmara (<a href="https://www.grupogen.com.br/e-book-petroleo-e-seus-derivados" target="_blank" rel="noopener noreferrer">FARAH, 2015</a>).</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; De acordo com as especificações da ANP (Agência Nacional do Petróleo), essa faixa de densidade a 20°C abrange valores
             de 850 a 900 kg/m³. Conforme descrito anteriormente, dentro da faixa permitida, uma densidade maior reduz o consumo específico e
             aumenta a energia gerada, no entanto, aumenta as emissões de CO, hidrocarbonetos e partículas, que são prejudiciais ao meio ambiente.</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; No geral, temperatura, pressão e composição do biodiesel são os principais fatores que determinam sua densidade,
             de modo que quanto maior a temperatura, ou quanto menor a pressão, maior a densidade, assim, existem na literatura
-            correlações que determinam a densidade desses parâmetros (CHHETRI e WATTS, 2012). Outro tipo de
+            correlações que determinam a densidade desses parâmetros (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0016236112003122" target="_blank" rel="noopener noreferrer">CHHETRI e WATTS, 2012</a>). Outro tipo de
             modelo amplamente utilizado para este fim é baseado em Equações de Estado (EoS), como a Equação de Estado
-            de Volume Traduzido (VTPR EoS) (SCHMID e GMEHLING, 2010).</p>
+            de Volume Traduzido (VTPR EoS) (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0896844610003815" target="_blank" rel="noopener noreferrer">SCHMID; GMEHLING, 2010</a>).</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; Existem também modelos baseados exclusivamente na estrutura molecular dos componentes de um líquido para prever sua
             volume molar, que compõe os métodos de contribuição dos grupos GCVOL, a partir dos quais esses modelos são usados ​​para
             determinar a densidade do biodiesel em uma faixa de temperatura. O primeiro método a adotar esta estratégia
-            (ELBRO, FREDENSLUND e RASMUSSEN, 1991), mostrou grande precisão, sofrendo posteriormente alguns
-            novas modificações com atualizações dos valores dos parâmetros para os grupos contribuintes (PRATAS, FREITAS, et al., 2011).</p>
+            (<a href="https://pubs.acs.org/doi/pdf/10.1021/ie00060a011?casa_token=dGRYIHrRmgQAAAAA:MIf8c21jJg7JG13cWbQ5esaNEUcDjDBVlOev61TJvFs3UwGYJVi19EcMLVgJ8HM5FA1IDfaqNRjoig" target="_blank" rel="noopener noreferrer">ELBRO; FREDENSLUND; RASMUSSEN, 1991</a>), mostrou grande precisão, sofrendo posteriormente alguns
+            novas modificações com atualizações dos valores dos parâmetros para os grupos contribuintes (<a href="https://pubs.acs.org/doi/full/10.1021/ef2002124?casa_token=vrw0XSURXikAAAAA%3Adw43WkH20wDyF0qmoMmi5n5NAcHTM1WwHIGK62z6YlT0PJjBiVaHtNFjSwEepnZdG0It62ik6kTDPg" target="_blank" rel="noopener noreferrer">PRATAS et al., 2011</a>).</p>
         <p>&nbsp; &nbsp; &nbsp; &nbsp; Por fim, outro modelo amplamente utilizado para prever a densidade do biodiesel leva em consideração a estrutura
             do composto, mas com uma abordagem diferente dos métodos de contribuição em grupo. A estratégia consiste
             na avaliação do comprimento da cadeia, ou seja, o número de carbonos presentes no composto e o número de insaturações
-            presente na molécula (LAPUERTA, RODRÍGUEZ-FERNÁNDEZ e ARMAS, 2010), podendo assim aplicar regras de mistura
+            presente na molécula (<a href="https://www.sciencedirect.com/science/article/abs/pii/S0009308410002987" target="_blank" rel="noopener noreferrer">LAPUERTA; RODRÍGUEZ-FERNÁNDEZ; ARMAS, 2010</a>), podendo assim aplicar regras de mistura
             no caso do biodiesel, pois é uma mistura de vários ésteres.</p>
         <h2>Modelos disponíveis</h2>
         <ul>
 
-            {% with density_models|get_name:"Murnaghan Equation" as density_model %}
+            {% with density_models|get_name:"Equação de Murnaghan" as density_model %}
             
                 <li><a href="{% url 'density:murnaghan_equation' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
 
@@ -46,9 +46,14 @@
                 <li><a href="{% url 'density:chhetri_watts' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
 
             {% endwith %}
-            {% with density_models|get_name:"Rackett-Soave Method" as density_model %}
+            {% with density_models|get_name:"Método Rackett-Soave" as density_model %}
             
                 <li><a href="{% url 'density:rackett_soave' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
+
+            {% endwith %}
+            {% with density_models|get_name:"Estrutura molecular" as density_model %}
+            
+                <li><a href="{% url 'density:molecular_structure' %}">{{ density_model }}</a> - {{ density_model.brief_description }}</li>
 
             {% endwith %}
             

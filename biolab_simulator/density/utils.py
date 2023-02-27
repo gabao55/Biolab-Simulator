@@ -48,3 +48,31 @@ def rackett_soave_predict(intensive_parameters: Dict, compounds: Dict) -> float:
         density += xi*reference_density/(Zra**Gama)
         
     return round(density, 3)
+
+def molecular_structure_predict(data):
+    number_of_compounds = int(len(data)/4)
+
+    molar_fractions = []
+    densities = []
+
+    for i in range(number_of_compounds):
+        esther_parameter = int(data[f"Esther parameter {i+1}"])
+        carbons_number = int(data[f"Carbons number {i+1}"])
+        number_of_double_bonds = int(data[f"Double bonds {i+1}"])
+        molar_fraction = int(data[f"Molar fraction {i+1}"])
+
+        density = 851.471 + (250.718*number_of_double_bonds + 280.899 - 92.18*(esther_parameter - 1)) / (1.214 + carbons_number)
+
+        densities.append(density)
+        molar_fractions.append(molar_fraction)
+
+    molar_fractions = [(lambda x: x/100)(x) for x in molar_fractions]
+    
+    return round(molar_mixing_rule(molar_fractions, densities), 1), molar_fractions
+
+def molar_mixing_rule(fractions, densities):
+    result = 0
+    for i in range(len(fractions)):
+        result += fractions[i]*densities[i]
+
+    return result
