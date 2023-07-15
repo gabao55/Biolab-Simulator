@@ -1,5 +1,5 @@
 <h1 align="center">Biolab-Simulator (BLSIM)</h1>
-Esse projeto consiste no Trabalho de Conclusão de Curso (TCC) do aluno Gabriel Salateo Rosin - RA 172436 para o curso de Engenharia Química da UNICAMP.
+Esse projeto consiste no Trabalho de pesquisa em programa PRH conjunto da Agência Nacional de Petróleo (ANP) e UNICAMP para desenvolvimento de simulador de propriedades de biodiesel open source.
 
 ## O projeto
 Com o intuito de desenvolver um software para predição de propriedades de ésteres e biodiesel, o estudo consiste em uma análise das principais especificações para comercialização do Biodiesel no Brasil, além da avaliação e seleção de modelos preditivos referentes às propriedades listadas nessas especificações para incorporação à ferramenta.
